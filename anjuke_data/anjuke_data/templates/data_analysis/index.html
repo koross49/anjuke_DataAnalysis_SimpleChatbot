@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>计网实习实训</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'vendor/metisMenu/metisMenu.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/sb-admin-2.css' %}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="{% static 'vendor/morrisjs/morris.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+
+    <script src="{% static 'js/echarts.min.js' %}"></script>
+    <script src="{% static 'js/tianjin.js' %}"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #box {
+      margin: 20px;
+      width: 1300px;
+      height: 600px;
+      background-color: white;
+    }
+  </style>
+
+<body>
+    {% load static %}
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index">安居客天津租房数据分析</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->                <!-- /.dropdown -->
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                        
+                        <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 图表<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="flot">天津市租房信息</a>
+                                </li>
+                                <li>
+                                    <a href="morris">各区租房信息</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="tables"><i class="fa fa-table fa-fw"></i> 表格</a>
+                        </li>
+
+                        <li>
+                            <a href="chatbot"><i class="fa fa-edit fa-fw"></i> ChatBot</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Home</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <p>
+                    <button type="button" class="btn btn-outline btn-primary btn-lg btn-block" onclick="confirmAndNavigate()">新建数据库</button>
+                    <script>
+                    function confirmAndNavigate() {
+                        if (confirm('您确定重建数据库吗？')) {
+                            window.location.href = 'index?newdb=true';
+                        }
+                    }
+                    </script>
+                </p>
+            </div>
+            <div class="row">
+                
+<div class="col-md-6 col-lg-6">
+          <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">2</div>
+                                    <div>Table Number&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="tables">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+<div class="col-md-6 col-lg-offset-0 col-lg-6">
+          <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">24</div>
+                                    <div>Chart Number&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="flot">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 天津房源热力图
+                            
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="box"></div>
+
+                            <script>
+  // 初始化实例对象 echarts.init(dom)容器;
+  var myChart = echarts.init(document.querySelector('#box'));
+  // 指定配置项和数据
+
+  var Data = [
+		{name:'和平', value: 199},
+        {name:'河东', value: 39},
+        {name:'河西', value: 152},
+        {name:'南开', value: 299},
+        {name:'河北', value: 89},
+        {name:'红桥', value: 52},
+        {name:'塘沽', value: 9},
+        {name:'汉沽', value: 352},
+        {name:'大港', value: 99},
+        {name:'东丽', value: 39},
+        {name:'西青', value: 480},
+        {name:'津南', value: 481},
+        {name:'北辰', value: 482},
+        {name:'武清', value: 483},
+        {name:'宝坻', value: 484},
+        {name:'宁河', value: 485},
+        {name:'静海', value: 486},
+        {name:'蓟县', value: 487},
+  ];
+  var option = {
+	animation:true,
+    tooltip: {
+      trigger: 'item',
+	  formatter: '{a} <br/>{b} : {c}',
+    },
+    legend: {
+      orient: 'vertical',
+      top: 'bottom',
+      left: 'right',
+      data: ['和平区', '河东区','河西区','南开区','河北区','红桥区','塘沽区','汉沽区','大港区','东丽区','西青区','津南区','北辰区','武清区','宝坻区','宁河区','静海区','蓟县区'],
+      textStyle: {
+        color: '#000000',
+      },
+      selectedMode: 'multiple',
+    },
+	visualMap: {
+        min: 0,
+        max: 150,
+		left:140,
+		bottom:60,
+        text: ['High', 'Low'],
+        realtime: false,
+        calculable: true,
+		//hoverLink: true,
+        inRange: {
+          color: ['#f1ccb8','#f1707d','#ef5767' ]
+        }
+      },
+	series: [
+        {
+		  animation:true,
+          name: '天津房源热力图',
+          type: 'map',
+          map: '天津',
+		  roam:true,
+          label: {
+            show: false
+          },
+		  itemStyle:{
+			color:'rgb(255,255,255,0)',
+			borderColor:'#FF0000',
+			borderWidth: 1,
+			areaColor: {
+				type: 'radial',
+				x: 0.5,
+				y: 0.5,
+				r: 0.8,
+				colorStops: [{
+					offset: 0,
+					color: '#FFEFD5', // 0% 处的颜色
+				}, {
+					offset: 1,
+					color: '#FFDAB9', // 100% 处的颜色
+				}],
+				globalCoord: false // 缺省为 false
+			},
+			shadowColor: 'rgba(128, 217, 248, 1)',
+			shadowOffsetX: -2,
+			shadowOffsetY: 2,
+			shadowBlur: 10
+		  },
+		  emphasis:{
+			itemStyle:{
+				areaColor:'#ddff95'
+			}
+		  },
+		  universalTransition:{
+			enabled:true
+		  },
+          data: [
+            {name:'和平区', value: 53},
+			{name:'河东区', value: 70},
+			{name:'河西区', value: 90},
+			{name:'南开区', value: 129},
+			{name:'河北区', value: 80},
+			{name:'红桥区', value: 67},
+			{name:'塘沽区', value: 87},
+			{name:'汉沽区', value: 6},
+			{name:'大港区', value: 11},
+			{name:'东丽区', value: 60},
+			{name:'西青区', value: 60},
+			{name:'津南区', value: 64},
+			{name:'北辰区', value: 94},
+			{name:'武清区', value: 33},
+			{name:'宝坻区', value: 18},
+			{name:'宁河区', value: 5},
+			{name:'静海区', value: 11},
+			{name:'蓟县区', value: 2},
+			{name:'滨海新区', value: 7},
+          ],
+        }
+      ]
+  };
+  myChart.setOption(option);
+</script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 天津各区租房均价
+                            
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>区名</th>
+                                                    <th>在租房屋总量</th>
+                                                    <th>平均月租金(元)</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+												
+                                                {% for item in data %}
+                                                    <tr>
+                                                        <td>{{ item.name }}</td>
+                                                        <td>{{ item.number }}</td>
+                                                        <td>{{ item.price }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> 项目介绍
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">项目背景</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>随着人们对租房需求的增加，租房市场变得更加竞争和复杂。租房信息数据分析项目旨在收集并分析各种租房信息数据，以提供给用户更准确、全面的市场洞察。通过该项目，用户可以了解不同地区的租金走势、热门地段、可租赁的房屋类型和配套设施等信息，以便更好地做出租房决策。</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">数据采集和处理</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>从“安居客”平台收集租房信息数据，并进行数据清洗、去重和格式转换。<br>
+                                                将数据进行可视化处理后可视化为图表。</p>
+                
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge danger"><i class="fa fa-bomb"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">数据展示和搜索</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>将数据库中内容以表格和可视化图表形式展示，用户可自行搜索比对可用信息。</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">地理信息分析</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>利用echarts提供的地图文档，将租房信息与地理位置相结合。<br>
+                                                可视化展示租房信息在地图上的分布，帮助用户了解各地区的租房热度。<br>
+                                                提供针对特定地区的租金分析，并支持用户根据地理位置进行数据查询和筛选。</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge info"><i class="fa fa-save"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">用户管理</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>实现用户的登录注册功能，可在本地数据库新建天津市租房信息数据库。</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">数据可视化和报告生成</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>利用图表、报表和可视化图形展示统计结果和趋势分析。<br>
+                                                提供图表导出功能，允许用户生成报告或分享分析结果。</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge success"><i class="fa fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">问答机器人</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>数据预处理（停用词、特殊字符处理等）<br>
+                                                jieba分词 <br>
+                                                TfidfVectorizer文本向量化<br>
+                                                计算余弦相似度对比选择答案</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+            2023南开计网实习实训人工智能13组 <a target="_blank" href="https://github.com/Koross2003/anjuke_DataAnalysis_SimpleChatbot">@GitHub地址</a>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static 'vendor/metisMenu/metisMenu.min.js' %}"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="{% static 'vendor/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'vendor/morrisjs/morris.min.js' %}"></script>
+    <script src="{% static 'data/morris-data.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'dist/js/sb-admin-2.js' %}"></script>
+
+</body>
+
+</html>

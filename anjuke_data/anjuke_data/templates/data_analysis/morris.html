@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>计网实习实训</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'vendor/metisMenu/metisMenu.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/sb-admin-2.css' %}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="{% static 'vendor/morrisjs/morris.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!--    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>-->
+
+</head>
+
+
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* 设置背景色 */
+    #box1 {
+      /* 设置上下外边距 80px 左右居中 */
+      margin: 80px auto;
+      width: 500px;
+      height: 2000px;
+    }
+    #box2 {
+      /* 设置上下外边距 80px 左右居中 */
+      margin: 80px auto;
+      width: 500px;
+      height: 2000px;
+    }
+    #box3 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box4 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box5 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box6 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box7 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box8 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box9 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box10 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box11 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box12 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box13 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box14 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box15 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+#box16 {
+  /* 设置上下外边距 80px 左右居中 */
+  margin: 80px auto;
+  width: 500px;
+  height: 2000px;
+}
+
+  </style>
+<body>
+    {% load static %}
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index">安居客天津租房数据分析</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                        
+                        <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 图表<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="flot">天津市租房信息</a>
+                                </li>
+                                <li>
+                                    <a href="morris">各区租房信息</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="tables"><i class="fa fa-table fa-fw"></i> 表格</a>
+                        </li>
+
+                        <li>
+                            <a href="chatbot"><i class="fa fa-edit fa-fw"></i> ChatBot</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Region</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            宝坻区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box1">
+                            <script>
+                               var dom = document.getElementById('box1');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+                                var app = {};
+
+                                var option;
+
+                                const data1 = {
+                                  name: '宝坻区',
+                                  children: [
+                                        { name: '宝鑫景苑', value:[650,1]},
+                                        { name: '天锦园', value: [1433.33,3] },
+                                        { name: '泰达金色领地', value: [1000,1] },
+                                        { name: '浩润嘉苑', value: [450,1] },
+                                        { name: '锦绣香江棕榈园', value: [800,1] },
+                                        { name: '钰鑫园', value: [1000,1] },
+                                        { name: '腾悦馨园', value: [1300,1] },
+                                        { name: '潮阳花园', value: [1100,1] },
+                                        { name: '紫溪花园', value: [800,1] },
+                                        { name: '岳园小区', value: [1000,1] },
+                                        { name: '状元城', value: [1000,1] },
+                                        { name: '蝶恋祥园', value: [1500,1] },
+                                        { name: '挹青园', value: [1400,1] },
+                                        { name: '蝶恋和园', value: [1300,2] },
+                                        { name: '金水湾花园', value: [600,1] },
+
+                                  ]
+                            };
+                            var option = {
+                              tooltip: {
+                                trigger: 'item',
+                                triggerOn: 'mousemove',
+                                formatter: '{b}<br/>房租均价，房源数量: {c}'
+                              },
+                              series: [
+                                {
+                                  type: 'tree',
+                                  id: 0,
+                                  name: 'tree1',
+                                  data: [data1],
+                                  top: '10%',
+                                  left: '40%',
+                                  bottom: '22%',
+                                  right: '40%',
+                                  roam:true,
+                                  symbolSize: 7,
+                                  edgeShape: 'polyline',
+                                  edgeForkPosition: '63%',
+                                  initialTreeDepth: 3,
+                                  lineStyle: {
+                                    width: 2
+                                  },
+                                  label: {
+                                    backgroundColor: '#fff',
+                                    position: 'left',
+                                    verticalAlign: 'middle',
+                                    align: 'right'
+                                  },
+                                  leaves: {
+                                    label: {
+                                      position: 'right',
+                                      verticalAlign: 'middle',
+                                      align: 'left'
+                                    }
+                                  },
+                                  emphasis: {
+                                    focus: 'descendant'
+                                  },
+                                  expandAndCollapse: true,
+                                  animationDuration: 550,
+                                  animationDurationUpdate: 750
+                                }
+                              ]
+                            };
+
+                                if (option && typeof option === 'object') {
+                                  myChart.setOption(option);
+                                }
+
+                                window.addEventListener('resize', myChart.resize);
+                              </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            北辰区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box2">
+
+                            <script type="text/javascript">
+                                var dom = document.getElementById('box2');
+    var myChart2 = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+                                var app = {};
+
+                                var option;
+
+                                const data2 = {
+                                  name: '北辰区',
+                                  children: [
+                                        { name: '盛庭名景花园', value: [1500,1] },
+                                        { name: '荣乐园', value: [2000,1] },
+                                        { name: '宜鹏园', value: [1260,1] },
+                                        { name: '大运河府', value: [1700,1] },
+                                        { name: '南仓新苑', value: [1200,1] },
+                                        { name: '盛泽园', value: [1512.5,4] },
+                                        { name: '万达新城普旺里', value: [1600,2] },
+                                        { name: '宸宜花园', value: [2400,2] },
+                                        { name: '翠涛里', value: [2900,1] },
+                                        { name: '城际美景', value: [1266.67,3] },
+                                        { name: '风雅苑', value: [1400,1] },
+                                        { name: '朝阳里(北辰)', value: [900,1] },
+                                        { name: '东升里(北辰)', value: [1600,1] },
+                                        { name: '金凤里', value: [1400,1] },
+                                        { name: '讷河里', value: [1100,2] },
+                                        { name: '辽河园', value: [1300,1] },
+                                        { name: '大张庄镇', value: [1900,1] },
+                                        { name: '瀛台里', value: [1300,1] },
+                                        { name: '万隆桃香园', value: [1850,2] },
+                                        { name: '天辰公寓', value: [1550,3] },
+                                        { name: '融创东岸名郡', value: [1600,1] },
+                                        { name: '普天东里', value: [1200,1] },
+                                        { name: '正荣府', value: [2475,4] },
+                                        { name: '荣悦园', value: [1400,1] },
+                                        { name: '仕名公寓', value: [1400,1] },
+                                        { name: '引河北里', value: [1500,1] },
+                                        { name: '盛仓新苑炎黄园', value: [1900,1] },
+                                        { name: '国耀上河城', value: [1900,2] },
+                                        { name: '双青新家园荣康园', value: [1300,1] },
+                                        { name: '都旺新城竹芳园', value: [2200,2] },
+                                        { name: '金地艺城华府北润华庭', value: [2400,1] },
+                                        { name: '都旺新城兰芳园', value: [1800,1] },
+                                        { name: '双街新家园', value: [1450,2] },
+                                        { name: '红云新里', value: [950,1] },
+                                        { name: '荣业园', value: [1300,1] },
+                                        { name: '天穆东苑', value: [1500,1] },
+                                        { name: '普达里', value: [1800,1] },
+                                        { name: '柴楼庄园', value: [1700,1] },
+                                        { name: '荣雅园', value: [1300,1] },
+                                        { name: '辰庆家园', value: [1150,2] },
+                                        { name: '顺和北里', value: [1500,1] },
+                                        { name: '恒大御景湾', value: [2500,1] },
+                                        { name: '星福庭苑', value: [1200,1] },
+                                        { name: '都汇杰座', value: [1600,1] },
+                                        { name: '宝翠花都探景园', value: [1800,1] },
+                                        { name: '翠涛东里', value: [1400,1] },
+                                        { name: '星安庭苑', value: [1400,1] },
+                                        { name: '新城悦隽风华滨斓苑', value: [1400,3] },
+                                        { name: '欧铂城小区', value: [2150,2] },
+                                        { name: '富锦华庭', value: [1825,4] },
+                                        { name: '融创臻园兰禾嘉苑', value: [2400,1] },
+                                        { name: '泰来西里', value: [1600,1] },
+                                        { name: '引河里', value: [1000,1] },
+                                        { name: '秀水馨苑', value: [1500,1] },
+                                        { name: '宜达园', value: [1600,1] },
+                                        { name: '金宜里', value: [1600,1] },
+                                        { name: '宜淞园', value: [2400,1] },
+                                        { name: '祥汇园', value: [2000,1] },
+                                        { name: '辰发花园', value: [1350,1] },
+                                        { name: '瑞佳家园', value: [1700,1] },
+                                        { name: '瑞盈园', value: [3000,1] },
+                                        { name: '潞河丽苑', value: [1000,2] },
+                                        { name: '荣居园', value: [1500,1] },
+                                        { name: '盛逸园', value: [1900,1] },
+                                        { name: '融创璟园', value: [1800,1] },
+                                        { name: '普泽家园', value: [1200,1] },
+                                        { name: '霞光里', value: [1300,1] },
+                                        { name: '民宜里', value: [1300,1] },
+                                  ]
+                            };
+                            var option = {
+                              tooltip: {
+                                trigger: 'item',
+                                triggerOn: 'mousemove',
+                                formatter: '{b}<br/>房租均价，房源数量: {c}'
+                              },
+                              series: [
+                                {
+                                  type: 'tree',
+                                  id: 0,
+                                  name: 'tree1',
+                                  data: [data2],
+                                  top: '10%',
+                                  left: '40%',
+                                  bottom: '22%',
+                                  right: '40%',
+                                  roam:true,
+                                  symbolSize: 7,
+                                  edgeShape: 'polyline',
+                                  edgeForkPosition: '63%',
+                                  initialTreeDepth: 3,
+                                  lineStyle: {
+                                    width: 2
+                                  },
+                                  label: {
+                                    backgroundColor: '#fff',
+                                    position: 'left',
+                                    verticalAlign: 'middle',
+                                    align: 'right'
+                                  },
+                                  leaves: {
+                                    label: {
+                                      position: 'right',
+                                      verticalAlign: 'middle',
+                                      align: 'left'
+                                    }
+                                  },
+                                  emphasis: {
+                                    focus: 'descendant'
+                                  },
+                                  expandAndCollapse: true,
+                                  animationDuration: 550,
+                                  animationDurationUpdate: 750
+                                }
+                              ]
+                            };
+
+                                if (option && typeof option === 'object') {
+                                  myChart2.setOption(option);
+                                }
+
+                                window.addEventListener('resize', myChart2.resize);
+                              </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            滨海新区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box3"></div>
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box3'));
+    var app = {};
+
+    var option;
+
+    const data3 = {
+      name: '滨海新区',
+      children: [
+		{name: '远洋城滨兴花园',value:[1500,1]},
+        {name: '万海华府北苑',value: [2800,1]},
+        {name: '瞰海轩',value: [1500,1]},
+        {name: '力高阳光海岸逸海苑',value: [1250,1]},
+        {name: '雅悦华邸',value: [1800,1]},
+        {name: '万科滨海大都会观塘苑',value: [3600,1]},
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data3],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            东丽区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box4">
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box4'));
+    var app = {};
+
+    var option;
+
+    const data4 = {
+      name: '东丽区',
+      children: [
+		{name: '先锋公寓',value:[2575,2]},
+        {name: '赵沽里新苑',value: [2100,2]},
+        {name: '雪优花园',value: [2466.67,3]},
+        {name: '詹滨西里社区',value: [1500,1]},
+        {name: '华润橡树湾芳润轩',value: [1900,1]},
+        {name: '颐景公寓',value: [2316.67,3]},
+        {name: '意境兰庭',value: [3025,4]},
+        {name: '春江里',value: [1600,1]},
+        {name: '融林园',value: [3600,1]},
+        {name: '金华里',value: [1600,1]},
+        {name: '金河家园',value: [1375,2]},
+        {name: '万新公寓',value: [1300,1]},
+        {name: '华盛里',value: [1300,1]},
+        {name: '昆仑里',value: [1500,1]},
+        {name: '友和里',value: [1000,1]},
+        {name: '兰雅苑',value: [2500,2]},
+		{name: '景欣苑',value: [2400,2]},
+        {name: '增兴家园',value: [1400,1]},
+        {name: '福山里',value: [1400,1]},
+        {name: '融秋园',value: [3500,1]},
+        {name: '金钟新城',value: [1250,1]},
+        {name: '万科新里程花园',value: [2800,1]},
+        {name: '航瑞雅庭',value: [1300,1]},
+		{name: '远洋新干线',value: [3000,2]},
+        {name: '逸园',value: [2500,2]},
+        {name: '舒畅嘉园',value: [1500,1]},
+        {name: '金隅悦城品香苑',value: [2600,1]},
+        {name: '童年湖',value: [2500,1]},
+        {name: '金泰丽湾',value: [2200,1]},
+        {name: '翠海佳园',value: [2600,1]},
+		{name: '盛锦苑',value: [1450,2]},
+        {name: '恒大翡翠华庭',value: [1433.33,3]},
+        {name: '华润橡树湾茗润轩',value: [2100,1]},
+        {name: '海山南里',value: [2200,1]},
+        {name: '赏湖苑',value: [1750,4]},
+        {name: '东丽湖万科城赏溪苑',value: [1500,2]},
+        {name: '中铁建梧桐苑',value: [2900,1]},
+		{name: '华润橡树湾香润轩',value: [1600,2]},
+		{name: '昆仑北里B区',value: [1950,1]},
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data4],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            和平区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box5">
+
+  <script>
+    var myChart = echarts.init(document.querySelector('#box5'));
+    var app = {};
+
+    var option;
+
+    const data5 = {
+      name: '和平区',
+      children: [
+		{name: '格普澜轩',value:[13000,1]},
+        {name: '融创星河和平印',value: [7266.67,3]},
+        {name: '寿安里',value: [4600,2]},
+        {name: '和平翰林公馆',value: [5150,4]},
+        {name: '都会轩',value: [5400,3]},
+        {name: '朝阳里',value: [3500,1]},
+        {name: '鸿记里',value: [4200,1]},
+        {name: '兴河里',value: [2525,2]},
+        {name: '新建村',value: [3500,1]},
+        {name: '市政里',value: [4000,1]},
+        {name: '金德园',value: [7000,1]},
+        {name: '尚府云台花园',value: [7000,1]},
+        {name: '信华楼',value: [2500,1]},
+        {name: '怀远里',value: [3700,1]},
+        {name: '卫华里',value: [3500,2]},
+        {name: '吉利花园',value: [3059,2]},
+		{name: '马场道',value: [8500,1]},
+        {name: '同发里',value: [1700,2]},
+        {name: '气象西里',value: [2900,1]},
+        {name: '泰华里',value: [4000,1]},
+        {name: '信华里',value: [3800,1]},
+        {name: '三乐里',value: [3300,1]},
+        {name: '振河里',value: [2700,2]},
+		{name: '明筑轩',value: [3600,1]},
+        {name: '大生里',value: [2500,1]},
+        {name: '诚基中心国际公寓',value: [2600,1]},
+        {name: '新文化花园新景居',value: [4100,2]},
+        {name: '宜天花园',value: [5800,1]},
+        {name: '南门外大街',value: [2300,1]},
+        {name: '府上和平',value: [17000,2]},
+		{name: '勤建里',value: [2800,1]},
+        {name: '裕德里',value: [3400,2]},
+        {name: '宏达公寓',value: [6200,1]},
+        {name: '郡城世家',value: [6500,1]},
+        {name: '新文化花园新丽居',value: [6500,1]},
+        {name: '犀地',value: [7200,1]},
+        {name: '文化村',value: [2400,1]},
+		{name: '世家新苑',value: [2500,1]},
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data5],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            河北区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box6">
+
+
+  <script>
+    var myChart = echarts.init(document.querySelector('#box6'));
+    var app = {};
+
+    var option;
+
+    const data6 = {
+      name: '河北区',
+      children: [
+			{ name: '喜峰嘉园', value: [1350,2] },
+			{ name: '金田花园', value: [2550,1] },
+			{ name: '富瀛洲花园', value: [1850,2] },
+			{ name: '盛海公寓', value: [3000,1] },
+			{ name: '建昌里', value: [1600,1] },
+			{ name: '中汇大厦', value: [1600,1] },
+			{ name: '嘉畅园', value: [1900,1] },
+			{ name: '康桥里', value: [1800,1] },
+			{ name: '胜景花园', value: [2150,2] },
+			{ name: '春和仁居', value: [3200,1] },
+			{ name: '贵贤里', value: [2300,1] },
+			{ name: '赛园里', value: [750,1] },
+			{ name: '林容里', value: [1700,1] },
+			{ name: '月秋里', value: [1850,2] },
+			{ name: '昆璞里', value: [2150,2] },
+			{ name: '金波里', value: [2200,1] },
+			{ name: '振宜里', value: [1450,1] },
+			{ name: '日远里', value: [1800,1] },
+			{ name: '通达新苑', value: [1900,1] },
+			{ name: '元吉里', value: [1800,1] },
+			{ name: '舒园里', value: [1600,1] },
+			{ name: '隆新里', value: [1500,1] },
+			{ name: '容彩里', value: [1800,3] },
+			{ name: '昆石里', value: [2500,1] },
+			{ name: '任贤里', value: [2100,1] },
+			{ name: '建湖里', value: [1300,1] },
+			{ name: '莹津里', value: [2400,1] },
+			{ name: '盛宇里', value: [1450,1] },
+			{ name: '元贺里', value: [1782,1] },
+			{ name: '日方里', value: [1445,2] },
+			{ name: '盛源公寓', value: [1500,1] },
+			{ name: '开云里', value: [1800,1] },
+			{ name: '志成东里', value: [1200,1] },
+			{ name: '昆宏里', value: [2800,1] },
+			{ name: '慧景园', value: [2000,1] },
+			{ name: '玉容花园', value: [2200,1] },
+			{ name: '泗阳里', value: [1300,1] },
+			{ name: '北宁湾宁宇家园', value: [2950,5] },
+			{ name: '随园公寓', value: [2100,1] },
+			{ name: '中环福境', value: [1700,1] },
+			{ name: '日光里', value: [1800,1] },
+			{ name: '君临大厦', value: [2550,2] },
+			{ name: '金海岸公寓', value: [5600,1] },
+			{ name: '桥园里(河北)', value: [1700,1] },
+			{ name: '长青北里', value: [2050,2] },
+			{ name: '宇萃里', value: [1300,1] },
+			{ name: '善安里', value: [2200,1] },
+			{ name: '悦海大厦', value: [4500,1] },
+			{ name: '丹江里', value: [1400,1] },
+			{ name: '首创大河公馆', value: [2800,1] },
+			{ name: '律笛里', value: [1474,2] },
+			{ name: '瑜峰园', value: [2700,1] },
+			{ name: '敬贤里', value: [2900,1] },
+			{ name: '仁恒河滨花园', value: [7000,1] },
+			{ name: '军民里', value: [2000,1] },
+			{ name: '华泰园', value: [2200,1] },
+			{ name: '爱家星河花园', value: [2500,1] },
+			{ name: '琴海公寓', value: [2900,2] },
+			{ name: '富贾花园', value: [4250,1] },
+			{ name: '米兰金狮家园', value: [1750,1] },
+			{ name: '颂贤里', value: [1400,2] },
+			{ name: '诗景颂苑', value: [3499,1] },
+			{ name: '辰润里', value: [1600,1] },
+			{ name: '满江北里', value: [1600,1] },
+
+		]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data6],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+	  roam:true,
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            河东区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box7">
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box7'));
+    var app = {};
+
+    var option;
+
+    const data7 = {
+      name: '河东区',
+      children: [
+			{ name: '滨河新苑', value: [2100,1] },
+			{ name: '临营西里', value: [1550,1] },
+			{ name: '紫乐名轩', value: [4050,2] },
+			{ name: '第六大道俊东公寓', value: [2000,1] },
+			{ name: '金旭园', value: [3600,1] },
+			{ name: '中储正荣栋境', value: [1700,2] },
+			{ name: '恒大帝景', value: [15000,1] },
+			{ name: '雅仕兰庭', value: [3300,1] },
+			{ name: '益寿东里', value: [2300,1] },
+			{ name: '富民河畔家园', value: [1800,1] },
+			{ name: '欣荣馨苑', value: [650,1] },
+			{ name: '新义信里', value: [1500,2] },
+			{ name: '中山门东里', value: [1400,2] },
+			{ name: '荣兴温泉公寓', value: [1800,1] },
+			{ name: '宫前园', value: [1600,1] },
+			{ name: '靖泰里', value: [1400,1] },
+			{ name: '映日嘉园', value: [2000,1] },
+			{ name: '天琴里', value: [1450,2] },
+			{ name: '华昌南里', value: [2000,1] },
+			{ name: '十四经路8号院', value: [2600,1] },
+			{ name: '津塘路187号小区', value: [1500,1] },
+			{ name: '向阳楼', value: [1750,2] },
+			{ name: '十二经路4号院', value: [3600,1] },
+			{ name: '金昌里小区', value: [1500,1] },
+			{ name: '华莹里', value: [1600,1] },
+			{ name: '明和里', value: [5000,1] },
+			{ name: '前进新里', value: [1500,1] },
+			{ name: '华光里', value: [1700,1] },
+			{ name: '春华里(河东)', value: [2500,1] },
+			{ name: '远洋新天地家园', value: [4500,1] },
+			{ name: '十三经路18号院', value: [2200,3] },
+			{ name: '城市之星大厦', value: [1200,1] },
+			{ name: '雅兰园', value: [3450,1] },
+			{ name: '红星国际星品大厦', value: [3000,1] },
+			{ name: '丰盛园', value: [3000,1] },
+			{ name: '华泰里', value: [1700,1] },
+			{ name: '程林里', value: [2800,1] },
+			{ name: '东惠家园', value: [1600,1] },
+			{ name: '卓越浅水湾', value: [3260,5] },
+			{ name: '嘉祥里(河东)', value: [2400,1] },
+			{ name: '红星国际晶品轩', value: [3600,1] },
+			{ name: '汇和家园', value: [5200,1] },
+			{ name: '光华小区', value: [2400,1] },
+			{ name: '富民路94号院', value: [1100,1] },
+			{ name: '天津雅颂居', value: [10000,2] },
+			{ name: '城市星座', value: [2300,1] },
+			{ name: '东盈园', value: [4000,1] },
+			{ name: '绚丽园', value: [2800,1] },
+			{ name: '靓锦名居', value: [4700,1] },
+			{ name: '蝶桥公寓', value: [3000,1] },
+			{ name: '秀丽园', value: [3000,1] },
+			{ name: '凤岐里', value: [1500,1] },
+			{ name: '上杭花园', value: [2500,1] },
+			{ name: '津塘路2号楼', value: [2000,1] },
+			{ name: '阳安里', value: [1300,1] },
+			{ name: '黄岩里', value: [1500,1] },
+			{ name: '互助南里', value: [1800,1] },
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data7],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           河西区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box8">
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box8'));
+    var app = {};
+
+    var option;
+
+    const data8 = {
+      name: '河西区',
+      children: [
+			{ name: '健春里', value: [4000,1] },
+			{ name: '森淼公寓', value: [5200,1] },
+			{ name: '新城小区', value: [1720.71,7] },
+			{ name: '仁恒公园世纪', value: [10000,1] },
+			{ name: '贺福里', value: [2100,1] },
+			{ name: '德恩里', value: [6000,1] },
+			{ name: '三合里', value: [2600,1] },
+			{ name: '珠波里', value: [2500,2] },
+			{ name: '元兴新里', value: [1833.33,3] },
+			{ name: '前程里', value: [3750,4] },
+			{ name: '景致里', value: [1750,1] },
+			{ name: '环湖西里(南区)', value: [2600,1] },
+			{ name: '文苑楼', value: [1950,2] },
+			{ name: '积庆里', value: [2500,1] },
+			{ name: '红波里', value: [1800,1] },
+			{ name: '港建里', value: [3500,1] },
+			{ name: '西园南里', value: [1800,1] },
+			{ name: '宾水北里', value: [2500,1] },
+			{ name: '西楼北里', value: [1900,1] },
+			{ name: '园丁公寓', value: [1500,1] },
+			{ name: '安德公寓', value: [2350,2] },
+			{ name: '春梅楼', value: [3300,1] },
+			{ name: '南海里', value: [1400,2] },
+			{ name: '存诚里', value: [3800,1] },
+			{ name: '红山里', value: [2500,1] },
+			{ name: '健强里社区', value: [1700,1] },
+			{ name: '服务楼', value: [3066.67,3] },
+			{ name: '富达里', value: [1700,1] },
+			{ name: '文静里', value: [2550,2] },
+			{ name: '东海里', value: [1500,2] },
+			{ name: '华江里', value: [1350,1] },
+			{ name: '三义大厦小区', value: [3000,1] },
+			{ name: '风致里', value: [1500,1] },
+			{ name: '惠众家园', value: [1900,1] },
+			{ name: '煤三宿舍', value: [1500,1] },
+			{ name: '宝德里', value: [2300,2] },
+			{ name: '澧新里', value: [2800,1] },
+			{ name: '久仰里(河西)', value: [1800,1] },
+			{ name: '浦口西里', value: [3000,1] },
+			{ name: '白云里', value: [1900,1] },
+			{ name: '桂江里(河西)', value: [1500,2] },
+			{ name: '广田里', value: [3600,1] },
+			{ name: '宾水东里', value: [2800,2] },
+			{ name: '谊城公寓', value: [2400,1] },
+			{ name: '爱国北里', value: [3500,1] },
+			{ name: '宾水南里', value: [2300,1] },
+			{ name: '兰江新苑', value: [2433.33,3] },
+			{ name: '利合里', value: [2600,1] },
+			{ name: '祺寿里', value: [2800,1] },
+			{ name: '黄海里', value: [1100,1] },
+			{ name: '雅境新枫尚', value: [3200,1] },
+			{ name: '福至里', value: [3500,1] },
+			{ name: '海逸长洲恋海园', value: [8500,1] },
+			{ name: '天房美棠美塘佳苑', value: [4000,1] },
+			{ name: '微山里', value: [1900,1] },
+			{ name: '同江里', value: [2000,1] },
+			{ name: '卫星里(河西)', value: [2200,1] },
+			{ name: '荔湾公寓', value: [2800,1] },
+			{ name: '凯德国贸', value: [5800,1] },
+			{ name: '气象台路95号增1号建设院家属楼', value: [4500,1] },
+			{ name: '柳苑公寓', value: [2200,1] },
+			{ name: '东风里(河西)', value: [4500,1] },
+			{ name: '云江新苑', value: [1900,1] },
+			{ name: '花样年喜年广场', value: [1900,1] },
+			{ name: '五福里', value: [4000,1] },
+			{ name: '天浦园', value: [3800,1] },
+			{ name: '珠峰里', value: [1500,1] },
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data8],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           红桥区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box9">
+
+  <script>
+    var myChart = echarts.init(document.querySelector('#box9'));
+    var app = {};
+
+    var option;
+
+    const data9 = {
+      name: '红桥区',
+      children: [
+        { name: '流霞东里', value: [1400,1] },
+        { name: '碧春园', value: [1700,3] },
+        { name: '振业名邸', value: [1916.67,3] },
+		{ name: '水木天成临湾园', value: [5500,1] },
+        { name: '人民家园', value: [2000,1] },
+        { name: '本溪楼', value: [1400,1] },
+		{ name: '锦西南里', value: [2000,1] },
+        { name: '米兰弘丽园', value: [3700,1] },
+        { name: '佳园南里', value: [1950,2] },
+		{ name: '昌图楼', value: [1475,2] },
+        { name: '佳宁里', value: [1710,2] },
+        { name: '长平西里', value: [1600,1] },
+		{ name: '燕宇新城', value: [1400,1] },
+        { name: '康华里', value: [1900,2] },
+        { name: '西青道楼', value: [1300,1] },
+		{ name: '潞河园', value: [2025,2] },
+        { name: '佳春里', value: [1750,2] },
+        { name: '大同门西里', value: [1300,1] },
+		{ name: '风光里', value: [1450,1] },
+        { name: '益鑫里', value: [2050,2] },
+        { name: '鼎发家园', value: [2200,1] },
+		{ name: '青春南里', value: [1400,1] },
+        { name: '河怡花园', value: [1700,1] },
+        { name: '龙禧园', value: [2350,2] },
+		{ name: '桃花园南里', value: [1500,1] },
+        { name: '礼貌楼', value: [2100,1] },
+        { name: '风采南里', value: [1600,1] },
+		{ name: '和苑梦和园', value: [1750,4] },
+        { name: '子牙南里', value: [1700,1] },
+        { name: '子牙里', value: [1466.67,3] },
+		{ name: '水木天成阁林园', value: [2233.33,3] },
+        { name: '水西园', value: [3000,1] },
+        { name: '湘潭里', value: [1700,1] },
+		{ name: '民畅园', value: [1500,1] },
+        { name: '礼貌东里小区', value: [1350,2] },
+        { name: '清源楼', value: [1900,1] },
+		{ name: '光荣楼', value: [1400,1] },
+        { name: '栖霞里', value: [2000,1] },
+        { name: '睦华里', value: [4500,1] },
+		{ name: '和苑国和园', value: [1500,1] },
+        { name: '晓春里', value: [2700,1] },
+        { name: '北开花园', value: [3500,1] },
+		{ name: '永进楼', value: [1400,1] },
+        { name: '金苑公寓', value: [1500,1] },
+        { name: '和苑全和园', value: [1900,1] },
+		{ name: '民族楼', value: [2700,1] },
+        { name: '宁城楼', value: [1700,1] },
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data9],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            蓟州区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box10">
+
+  <script>
+    var myChart = echarts.init(document.querySelector('#box10'));
+    var app = {};
+
+    var option;
+
+    const data10 = {
+      name: '蓟州区',
+      children: [
+		{name: '安裕新村',value:[900,2]},
+        {name: '碧玉家园',value: [1000,2]},
+        {name: '美域新城',value: [1100,2]},
+        {name: '五子家园',value: [1100,1]},
+        {name: '怡君园',value: [1600,1]},
+        {name: '曲院风荷',value: [2000,1]},
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data10],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            津南区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box11">
+
+  <script>
+    var myChart = echarts.init(document.querySelector('#box11'));
+    var app = {};
+
+    var option;
+
+    const data11 = {
+      name: '津南区',
+      children: [
+		{name: '星耀五洲澜海庄园',value:[1500,1]},
+        {name: '雅晟轩',value: [2000,1]},
+        {name: '红霞里(津南)',value: [1300,4]},
+        {name: '龙湖天宸原著',value: [3400,2]},
+        {name: '星耀五洲枫情阳光城',value: [1200,1]},
+        {name: '大唐盛世观雅庭院',value: [1200,1]},
+        {name: '阳光城未来悦',value: [2700,1]},
+        {name: '津南新城合安园',value: [1850,2]},
+        {name: '光明里(津南)',value: [870,1]},
+        {name: '育才里(津南)',value: [1066.67,3]},
+        {name: '鑫港园',value: [1400,1]},
+        {name: '广建里',value: [833,1]},
+        {name: '惠安花园',value: [1300,1]},
+        {name: '宝业馨苑',value: [1200,1]},
+        {name: '博雅花园(津南)',value: [2000,1]},
+        {name: '天地源津九轩',value: [1800,1]},
+		{name: '雅居乐御宾府',value: [2900,1]},
+        {name: '中海公园城尚湖苑',value: [1500,1]},
+        {name: '津南新城合力园',value: [1850,1]},
+        {name: '鑫旺里',value: [1500,1]},
+        {name: '华润中央公园香薇邸',value: [2300,1]},
+        {name: '御和新苑',value: [1200,1]},
+        {name: '津南新城合雅园',value: [1850,2]},
+		{name: '富力桃园天富园',value: [3500,3]},
+        {name: '沽上江南',value: [1425,2]},
+        {name: '新旭园',value: [1200,2]},
+        {name: '金地艺华年盈翠名苑',value: [2400,2]},
+        {name: '香雪苑',value: [2400,1]},
+        {name: '欣桃园',value: [1450,1]},
+        {name: '津南新城合茂园',value: [1500,1]},
+		{name: '鑫洋园',value: [1500,1]},
+        {name: '路劲赞成',value: [2500,1]},
+        {name: '金益园',value: [1500,2]},
+        {name: '文德花园',value: [2500,2]},
+        {name: '金地格林世界棕榈苑',value: [2200,1]},
+        {name: '宝福家园',value: [2500,1]},
+        {name: '蓝光雍锦香颂',value: [1600,2]},
+		{name: '龙湖天璞',value: [2300,1]},
+		{name: '金才园',value: [1400,1]},
+        {name: '天嘉湖花园',value: [1300,1]},
+        {name: '锦绣大家',value: [2600,2]},
+		{name: '九洲创意园',value: [1300,1]},
+        {name: '碧桂园映月庭院',value: [1500,1]},
+        {name: '福松源庄二期',value: [1800,1]},
+        {name: '红磡领世郡人才公寓',value: [2500,1]},
+        {name: '华远景瑞海蓝城',value: [2200,1]},
+        {name: '水岸华庭(津南)',value: [1900,1]},
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data11],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            静海区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box12">
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box12'));
+    var app = {};
+
+    var option;
+
+    const data12 = {
+      name: '静海区',
+      children: [
+		{name: '中昂安纳西小镇',value:[1300,1]},
+        {name: '津泊湾',value: [850,2]},
+        {name: '禹洲御湖郡',value: [1500,1]},
+        {name: '富力新城观澜南苑',value: [1300,1]},
+        {name: '鸿坤理想城澜境东苑',value: [1800,1]},
+        {name: '碧桂园丽泽府',value: [1500,2]},
+        {name: '奥体公元101',value: [1100,1]},
+        {name: '招商依水郡',value: [1000,1]},
+        {name: '富力新城雍景豪庭',value: [900,1]},
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data12],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            南开区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box13">
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box13'));
+    var app = {};
+
+    var option;
+
+    const data13 = {
+      name: '南开区',
+      children: [
+		{name: '华宁北里',value:[2500,1]},
+        {name: '晋宁北里',value: [1800,1]},
+        {name: '天环里',value: [1500,1]},
+        {name: '阳光100国际新城东园',value: [3500,2]},
+        {name: '水蓝花园',value: [1975,2]},
+        {name: '龙亭家园',value: [3500,1]},
+        {name: '鹤园北里',value: [2500,1]},
+        {name: '金冠里',value: [3200,1]},
+        {name: '融创奥城天玺',value: [3400,3]},
+        {name: '尚佳新苑',value: [4600,1]},
+        {name: '康达尚郡',value: [2100,1]},
+        {name: '盈秀园',value: [850,1]},
+        {name: '天越园',value: [8300,1]},
+        {name: '卫安中里',value: [2066.67,3]},
+        {name: '群富里',value: [2600,1]},
+        {name: '拥军里',value: [1700,1]},
+		{name: '临潼西里',value: [2000,1]},
+        {name: '雅美里',value: [2100,1]},
+        {name: '植园里',value: [1700,1]},
+        {name: '堤东里',value: [2100,1]},
+        {name: '义兴里',value: [2000,1]},
+        {name: '临平里',value: [2425,1]},
+        {name: '景湖里',value: [2500,1]},
+		{name: '卫安南里',value: [2150,2]},
+        {name: '风湖里',value: [2524.83,1]},
+        {name: '雅云里',value: [2100,2]},
+        {name: '彩霞里',value: [1800,3]},
+        {name: '摩登天空凤仪园',value: [2500,3]},
+        {name: '义兴南里',value: [1800,1]},
+        {name: '耀远里',value: [2400,1]},
+		{name: '春香里',value: [1650,1]},
+        {name: '瑞地里小区',value: [2700,1]},
+        {name: '日华里',value: [3200,1]},
+        {name: '稚优里',value: [2300,1]},
+        {name: '凌奥花园',value: [2700,1]},
+        {name: '源德里',value: [2500,1]},
+        {name: '园川里',value: [1900,1]},
+		{name: '宜君里',value: [1500,1]},
+		{name: '保康里',value:[1800,1]},
+        {name: '航天北里',value: [2500,1]},
+        {name: '汶川里',value: [1633.33,3]},
+        {name: '宜君北里',value: [1600,2]},
+        {name: '清新园',value: [4500,2]},
+        {name: '延长里',value: [1900,1]},
+        {name: '来福里文明小区',value: [2500,1]},
+        {name: '易川里',value: [1600,1]},
+        {name: '川北里',value: [1800,1]},
+        {name: '照湖里',value: [2500,1]},
+        {name: '龙德里',value: [2200,1]},
+        {name: '凯立天香家园',value: [3900,2]},
+        {name: '级升里',value: [2250,2]},
+        {name: '东北角艺术公寓',value: [3500,1]},
+        {name: '雅安东里',value: [1700,1]},
+        {name: '水郡花园',value: [3100,1]},
+		{name: '金云里小区',value: [3800,1]},
+        {name: '南开1911',value: [5500,1]},
+        {name: '盈江里',value: [1900,1]},
+        {name: '明园里',value: [3000,1]},
+        {name: '红和里',value: [2050,1]},
+        {name: '荣迁东里',value: [2899,1]},
+        {name: '留园里(南开)',value: [2200,1]},
+		{name: '天霖园',value: [5800,1]},
+        {name: '奥林匹克村',value: [3200,1]},
+        {name: '凤园里',value: [1699,1]},
+        {name: '铜锣湾花园',value: [4100,2]},
+        {name: '瑞德里',value: [1800,1]},
+        {name: '飞云里',value: [2900,1]},
+        {name: '新安花园',value: [4500,1]},
+		{name: '新庆里',value: [2600,1]},
+        {name: '迎风里',value: [1600,1]},
+        {name: '莲安里',value: [3300,1]},
+        {name: '卫安北里',value: [1900,1]},
+        {name: '熙汇广场',value: [2300,1]},
+        {name: '春畅里',value: [1600,1]},
+        {name: '燕园里',value: [1900,1]},
+		{name: '延生里',value: [2200,1]},
+		{name: '长治里',value:[2200,1]},
+        {name: '中交海河公馆',value: [6600,1]},
+        {name: '官易里',value: [1900,1]},
+        {name: '凌奥产业园国际公寓',value: [3000,1]},
+        {name: '保利国际博朗园',value: [2500,1]},
+        {name: '沱江里',value: [3200,1]},
+        {name: '新华园小区',value: [5200,1]},
+        {name: '桦林园',value: [4600,1]},
+        {name: '天康园',value: [4266.67,1]},
+        {name: '永基花园',value: [3400,1]},
+        {name: '塞纳公馆',value: [2400,1]},
+        {name: '金盛国际',value: [2900,1]},
+        {name: '苏堤东里',value: [2100,1]},
+        {name: '富平里',value: [2200,1]},
+        {name: '盈江西里',value: [1900,1]},
+        {name: '凯摩国际公寓',value: [3700,2]},
+		{name: '新都大厦小区',value: [5200,1]},
+        {name: '翰雅园',value: [4300,1]},
+        {name: '云阳西里',value: [2400,2]},
+        {name: '时代奥城',value: [7500,1]},
+        {name: '芥园里',value: [1200,1]},
+        {name: '林苑西里',value: [2400,1]},
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data13],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+      symbolSize: 7,
+	  roam:true,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            宁河区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box14">
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box14'));
+    var app = {};
+
+    var option;
+
+    const data14 = {
+      name: '宁河区',
+      children: [
+		{name: '晨光楼(宁河)',value:[1200,1]},
+        {name: '东方尚都',value: [999,1]},
+        {name: '金城嘉园',value: [2200,1]},
+        {name: '顺兴小区',value: [1400,2]},
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data14],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            武清区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box15">
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box15'));
+    var app = {};
+
+    var option;
+
+    const data15 = {
+      name: '武清区',
+      children: [
+		{name: '惠昊商住',value:[650,1]},
+        {name: '广厦西里',value: [1300,1]},
+        {name: '平安里(武清)',value: [1450,2]},
+        {name: '泰合府',value: [1500,1]},
+        {name: '鸿坤原乡郡',value: [1930,3]},
+        {name: '五一阳光锦园',value: [1300,1]},
+        {name: '蒲瑞祥园西区',value: [1400,1]},
+        {name: '保利海棠湾',value: [2500,1]},
+        {name: '香江广场',value: [1500,1]},
+        {name: '祥福园二期',value: [1800,1]},
+        {name: '同泽园(武清)',value: [1800,1]},
+        {name: '国际城百合花苑',value: [900,1]},
+        {name: '泽信金汇湾儒香园',value: [1500,1]},
+        {name: '城锦园',value: [1400,1]},
+        {name: '泉上文华',value: [1200,1]},
+        {name: '泉昇佳苑中区',value: [1250,2]},
+		{name: '丽泽花园(武清)',value: [1200,1]},
+        {name: '荔隆观邸',value: [1800,1]},
+        {name: '经纬城市绿洲华清家园',value: [1300,1]},
+        {name: '盛世家园',value: [1700,1]},
+        {name: '栖仙温泉公寓中区',value: [2100,1]},
+        {name: '新湾花园(北园)',value: [1700,1]},
+        {name: '景瑞花园',value: [1000,1]},
+		{name: '翠亨花园北里',value: [1600,1]},
+        {name: '紫泉庭苑',value: [2600,1]},
+        {name: '凤河孔雀城',value: [1500,2]},
+        {name: '京津时尚广场',value: [1500,1]},
+        {name: '富力尚悦居',value: [2500,1]},
+
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data15],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            西青区
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box16">
+                            <script>
+    var myChart = echarts.init(document.querySelector('#box16'));
+    var app = {};
+
+    var option;
+
+    const data16 = {
+      name: '西青区',
+      children: [
+		{name: '保富国际',value:[1500,1]},
+        {name: '王顶堤家园',value: [1700,1]},
+        {name: '梨秀园',value: [1575,2]},
+        {name: '侯台家园',value: [2400,1]},
+        {name: '地丰里',value: [1900,1]},
+        {name: '美域豪庭',value: [3433.33,3]},
+        {name: '富力津门湖黛湖花园',value: [1400,1]},
+        {name: '万科西华府博华苑',value: [1800,2]},
+        {name: '旭辉燕南园',value: [560,1]},
+        {name: '大津城臻品',value: [3000,1]},
+        {name: '中盛里',value: [2000,1]},
+        {name: '龙居花园三区',value: [750,1]},
+        {name: '广悦里',value: [1300,1]},
+        {name: '水岸华庭(西青)',value: [2200,1]},
+        {name: '同盛里(西青)',value: [1100,1]},
+        {name: '碧水家园A区',value: [750,1]},
+		{name: '金厦新都静溪园',value: [2600,1]},
+        {name: '花溪苑',value: [1900,1]},
+        {name: '燕宇花园',value: [1900,2]},
+        {name: '小镇西西里瑞安里',value: [1500,1]},
+        {name: '水溪苑',value: [1800,1]},
+        {name: '荷塘悦色',value: [2400,1]},
+        {name: '莱茵小镇美林苑',value: [1950,2]},
+		{name: '新津国际',value: [1800,1]},
+        {name: '君悦花苑',value: [2500,2]},
+        {name: '假日盈润园',value: [2500,1]},
+        {name: '社会山南苑',value: [2400,1]},
+        {name: '融侨阳光城皓玥',value: [2500,1]},
+        {name: '万科四季花城雅园',value: [2450,2]},
+        {name: '招商公园1872',value: [2800,1]},
+		{name: '新科园',value: [1900,1]},
+        {name: '金融街融汇',value: [3500,1]},
+        {name: '万科西庐文韵园',value: [2600,1]},
+        {name: '社会山东苑',value: [2450,2]},
+        {name: '佳和雅庭',value: [2200,1]},
+        {name: '碧水家园B区',value: [2500,1]},
+        {name: '远洋万和城',value: [3300,1]},
+		{name: '富力津门湖云舒花园',value: [5000,1]},
+		{name: '万科西庐学韵园',value: [2600,1]},
+		{name: '碧水家园DE区',value: [2400,1]},
+        {name: '旭辉御府',value: [2500,1]},
+        {name: '富力津门湖景尚嘉郡花园',value: [4300,1]},
+        {name: '万汇文化广场',value: [2300,1]},
+        {name: '宇泰家园',value: [2050,2]},
+        {name: '溪清苑',value: [2000,1]},
+        {name: '莱茵小镇美泉苑',value: [2000,1]},
+		{name: '王村金祥园',value: [1800,1]},
+		{name: '金旺南里',value: [2000,1]},
+		{name: '和瑞园',value: [2100,1]},
+      ]
+};
+var option = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove',
+	formatter: '{b}<br/>房租均价，房源数量: {c}'
+  },
+  series: [
+    {
+      type: 'tree',
+      id: 0,
+      name: 'tree1',
+      data: [data16],
+      top: '10%',
+      left: '40%',
+      bottom: '22%',
+      right: '40%',
+	  roam:true,
+      symbolSize: 7,
+      edgeShape: 'polyline',
+      edgeForkPosition: '63%',
+      initialTreeDepth: 3,
+      lineStyle: {
+        width: 2
+      },
+      label: {
+        backgroundColor: '#fff',
+        position: 'left',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          verticalAlign: 'middle',
+          align: 'left'
+        }
+      },
+      emphasis: {
+        focus: 'descendant'
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+            </div>
+            <!-- /.row -->
+            2023南开计网实习实训人工智能13组 <a target="_blank" href="https://github.com/Koross2003/anjuke_DataAnalysis_SimpleChatbot">@GitHub地址</a>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static 'vendor/metisMenu/metisMenu.min.js' %}"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="{% static 'vendor/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'vendor/morrisjs/morris.min.js' %}"></script>
+    <script src="{% static 'data/morris-data.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'dist/js/sb-admin-2.js' %}"></script>
+
+</body>
+
+</html>

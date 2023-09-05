@@ -1,0 +1,8267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>计网实习实训</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'vendor/metisMenu/metisMenu.min.css' %}" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="{% static 'vendor/datatables-plugins/dataTables.bootstrap.css' %}" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="{% static 'vendor/datatables-responsive/dataTables.responsive.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/sb-admin-2.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    {% load static %}
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index">安居客天津租房数据分析</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                        
+                        <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 图表<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="flot">天津市租房信息</a>
+                                </li>
+                                <li>
+                                    <a href="morris">各区租房信息</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="tables"><i class="fa fa-table fa-fw"></i> 表格</a>
+                        </li>
+
+                        <li>
+                            <a href="chatbot"><i class="fa fa-edit fa-fw"></i> ChatBot</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Tables</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            DataTables Advanced Tables
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>租金</th>
+                                        <th>押金</th>
+                                        <th>户型</th>
+                                        <th>面积</th>
+                                        <th>街区</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+<!--                                    <tr class="odd gradeX">-->
+<!--                                        <td>Trident</td>-->
+<!--                                        <td>Internet Explorer 4.0</td>-->
+<!--                                        <td>Win 95+</td>-->
+<!--                                        <td class="center">4</td>-->
+<!--                                        <td class="center">X</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="even gradeC">-->
+<!--                                        <td>Trident</td>-->
+<!--                                        <td>Internet Explorer 5.0</td>-->
+<!--                                        <td>Win 95+</td>-->
+<!--                                        <td class="center">5</td>-->
+<!--                                        <td class="center">C</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="odd gradeA">-->
+<!--                                        <td>Trident</td>-->
+<!--                                        <td>Internet Explorer 5.5</td>-->
+<!--                                        <td>Win 95+</td>-->
+<!--                                        <td class="center">5.5</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="even gradeA">-->
+<!--                                        <td>Trident</td>-->
+<!--                                        <td>Internet Explorer 6</td>-->
+<!--                                        <td>Win 98+</td>-->
+<!--                                        <td class="center">6</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="odd gradeA">-->
+<!--                                        <td>Trident</td>-->
+<!--                                        <td>Internet Explorer 7</td>-->
+<!--                                        <td>Win XP SP2+</td>-->
+<!--                                        <td class="center">7</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="even gradeA">-->
+<!--                                        <td>Trident</td>-->
+<!--                                        <td>AOL browser (AOL desktop)</td>-->
+<!--                                        <td>Win XP</td>-->
+<!--                                        <td class="center">6</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Firefox 1.0</td>-->
+<!--                                        <td>Win 98+ / OSX.2+</td>-->
+<!--                                        <td class="center">1.7</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Firefox 1.5</td>-->
+<!--                                        <td>Win 98+ / OSX.2+</td>-->
+<!--                                        <td class="center">1.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Firefox 2.0</td>-->
+<!--                                        <td>Win 98+ / OSX.2+</td>-->
+<!--                                        <td class="center">1.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Firefox 3.0</td>-->
+<!--                                        <td>Win 2k+ / OSX.3+</td>-->
+<!--                                        <td class="center">1.9</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Camino 1.0</td>-->
+<!--                                        <td>OSX.2+</td>-->
+<!--                                        <td class="center">1.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Camino 1.5</td>-->
+<!--                                        <td>OSX.3+</td>-->
+<!--                                        <td class="center">1.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Netscape 7.2</td>-->
+<!--                                        <td>Win 95+ / Mac OS 8.6-9.2</td>-->
+<!--                                        <td class="center">1.7</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Netscape Browser 8</td>-->
+<!--                                        <td>Win 98SE+</td>-->
+<!--                                        <td class="center">1.7</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Netscape Navigator 9</td>-->
+<!--                                        <td>Win 98+ / OSX.2+</td>-->
+<!--                                        <td class="center">1.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.0</td>-->
+<!--                                        <td>Win 95+ / OSX.1+</td>-->
+<!--                                        <td class="center">1</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.1</td>-->
+<!--                                        <td>Win 95+ / OSX.1+</td>-->
+<!--                                        <td class="center">1.1</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.2</td>-->
+<!--                                        <td>Win 95+ / OSX.1+</td>-->
+<!--                                        <td class="center">1.2</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.3</td>-->
+<!--                                        <td>Win 95+ / OSX.1+</td>-->
+<!--                                        <td class="center">1.3</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.4</td>-->
+<!--                                        <td>Win 95+ / OSX.1+</td>-->
+<!--                                        <td class="center">1.4</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.5</td>-->
+<!--                                        <td>Win 95+ / OSX.1+</td>-->
+<!--                                        <td class="center">1.5</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.6</td>-->
+<!--                                        <td>Win 95+ / OSX.1+</td>-->
+<!--                                        <td class="center">1.6</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.7</td>-->
+<!--                                        <td>Win 98+ / OSX.1+</td>-->
+<!--                                        <td class="center">1.7</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Mozilla 1.8</td>-->
+<!--                                        <td>Win 98+ / OSX.1+</td>-->
+<!--                                        <td class="center">1.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Seamonkey 1.1</td>-->
+<!--                                        <td>Win 98+ / OSX.2+</td>-->
+<!--                                        <td class="center">1.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Gecko</td>-->
+<!--                                        <td>Epiphany 2.20</td>-->
+<!--                                        <td>Gnome</td>-->
+<!--                                        <td class="center">1.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Webkit</td>-->
+<!--                                        <td>Safari 1.2</td>-->
+<!--                                        <td>OSX.3</td>-->
+<!--                                        <td class="center">125.5</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Webkit</td>-->
+<!--                                        <td>Safari 1.3</td>-->
+<!--                                        <td>OSX.3</td>-->
+<!--                                        <td class="center">312.8</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Webkit</td>-->
+<!--                                        <td>Safari 2.0</td>-->
+<!--                                        <td>OSX.4+</td>-->
+<!--                                        <td class="center">419.3</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Webkit</td>-->
+<!--                                        <td>Safari 3.0</td>-->
+<!--                                        <td>OSX.4+</td>-->
+<!--                                        <td class="center">522.1</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Webkit</td>-->
+<!--                                        <td>OmniWeb 5.5</td>-->
+<!--                                        <td>OSX.4+</td>-->
+<!--                                        <td class="center">420</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Webkit</td>-->
+<!--                                        <td>iPod Touch / iPhone</td>-->
+<!--                                        <td>iPod</td>-->
+<!--                                        <td class="center">420.1</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Webkit</td>-->
+<!--                                        <td>S60</td>-->
+<!--                                        <td>S60</td>-->
+<!--                                        <td class="center">413</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Opera 7.0</td>-->
+<!--                                        <td>Win 95+ / OSX.1+</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Opera 7.5</td>-->
+<!--                                        <td>Win 95+ / OSX.2+</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Opera 8.0</td>-->
+<!--                                        <td>Win 95+ / OSX.2+</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Opera 8.5</td>-->
+<!--                                        <td>Win 95+ / OSX.2+</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Opera 9.0</td>-->
+<!--                                        <td>Win 95+ / OSX.3+</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Opera 9.2</td>-->
+<!--                                        <td>Win 88+ / OSX.3+</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Opera 9.5</td>-->
+<!--                                        <td>Win 88+ / OSX.3+</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Opera for Wii</td>-->
+<!--                                        <td>Wii</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Nokia N800</td>-->
+<!--                                        <td>N800</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Presto</td>-->
+<!--                                        <td>Nintendo DS browser</td>-->
+<!--                                        <td>Nintendo DS</td>-->
+<!--                                        <td class="center">8.5</td>-->
+<!--                                        <td class="center">C/A<sup>1</sup>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeC">-->
+<!--                                        <td>KHTML</td>-->
+<!--                                        <td>Konqureror 3.1</td>-->
+<!--                                        <td>KDE 3.1</td>-->
+<!--                                        <td class="center">3.1</td>-->
+<!--                                        <td class="center">C</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>KHTML</td>-->
+<!--                                        <td>Konqureror 3.3</td>-->
+<!--                                        <td>KDE 3.3</td>-->
+<!--                                        <td class="center">3.3</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>KHTML</td>-->
+<!--                                        <td>Konqureror 3.5</td>-->
+<!--                                        <td>KDE 3.5</td>-->
+<!--                                        <td class="center">3.5</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeX">-->
+<!--                                        <td>Tasman</td>-->
+<!--                                        <td>Internet Explorer 4.5</td>-->
+<!--                                        <td>Mac OS 8-9</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">X</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeC">-->
+<!--                                        <td>Tasman</td>-->
+<!--                                        <td>Internet Explorer 5.1</td>-->
+<!--                                        <td>Mac OS 7.6-9</td>-->
+<!--                                        <td class="center">1</td>-->
+<!--                                        <td class="center">C</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeC">-->
+<!--                                        <td>Tasman</td>-->
+<!--                                        <td>Internet Explorer 5.2</td>-->
+<!--                                        <td>Mac OS 8-X</td>-->
+<!--                                        <td class="center">1</td>-->
+<!--                                        <td class="center">C</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Misc</td>-->
+<!--                                        <td>NetFront 3.1</td>-->
+<!--                                        <td>Embedded devices</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">C</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeA">-->
+<!--                                        <td>Misc</td>-->
+<!--                                        <td>NetFront 3.4</td>-->
+<!--                                        <td>Embedded devices</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">A</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeX">-->
+<!--                                        <td>Misc</td>-->
+<!--                                        <td>Dillo 0.8</td>-->
+<!--                                        <td>Embedded devices</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">X</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeX">-->
+<!--                                        <td>Misc</td>-->
+<!--                                        <td>Links</td>-->
+<!--                                        <td>Text only</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">X</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeX">-->
+<!--                                        <td>Misc</td>-->
+<!--                                        <td>Lynx</td>-->
+<!--                                        <td>Text only</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">X</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeC">-->
+<!--                                        <td>Misc</td>-->
+<!--                                        <td>IE Mobile</td>-->
+<!--                                        <td>Windows Mobile 6</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">C</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeC">-->
+<!--                                        <td>Misc</td>-->
+<!--                                        <td>PSP browser</td>-->
+<!--                                        <td>PSP</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">C</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr class="gradeU">-->
+<!--                                        <td>Other browsers</td>-->
+<!--                                        <td>All others</td>-->
+<!--                                        <td>-</td>-->
+<!--                                        <td class="center">-</td>-->
+<!--                                        <td class="center">U</td>-->
+<!--                                    </tr>-->
+                                    <tr class="gradeA">
+<td>1400</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>20平方米</td>
+<td>河北 宁园街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>35平方米</td>
+<td>AC区</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>北辰 瑞景街</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>年付</td>
+<td>2室1厅1卫</td>
+<td>81平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>68平方米</td>
+<td>塘沽 塘沽新村街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>40平方米</td>
+<td>西青 新梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>94平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>2550</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48平方米</td>
+<td>河北 望海楼街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>40平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>红桥 西于庄街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>91平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>69平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>2150</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>83.1平方米</td>
+<td>东丽 津塘路</td>
+</tr>
+<tr class="gradeA">
+<td>1550</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38平方米</td>
+<td>河东 常州道</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>98平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>77平方米</td>
+<td>津南 津南八里台</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>92平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>南开 天拖南</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>74平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>13000</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>113.8平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1850</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>91平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>河东 一号桥</td>
+</tr>
+<tr class="gradeA">
+<td>7000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>95平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38平方米</td>
+<td>塘沽 塘沽新村街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>66.4平方米</td>
+<td>东丽 大毕庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td>河东 上杭路</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>96.5平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>83.7平方米</td>
+<td>津南</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河西 越秀路</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>西青 新梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>96平方米</td>
+<td>西青 侯台</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>南开 天拖南</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>92平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>33平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>95平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>99平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>半年付押1</td>
+<td>1室1厅1卫</td>
+<td>61.9平方米</td>
+<td>东丽 先锋路</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>64.2平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅0卫</td>
+<td>67平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>134平方米</td>
+<td>河东 鲁山道</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>108平方米</td>
+<td>开发区 第三大街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>56平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>4200</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>124平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>5500</td>
+<td>付3押1</td>
+<td>3室1厅2卫</td>
+<td>100平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>6000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>78.8平方米</td>
+<td>和平 劝业场</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>86平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>95平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>4700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>67.4平方米</td>
+<td>和平 体育馆</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>79平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>54平方米</td>
+<td>和平</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>90.3平方米</td>
+<td>西青 李七庄</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>104平方米</td>
+<td>河北 新开河街</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>97.2平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>94.2平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>5200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>98平方米</td>
+<td>河西 马场道</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>30平方米</td>
+<td>河东 上杭路</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>30平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1260</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>124.2平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>44平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>1650</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>30平方米</td>
+<td>南开 水上公园</td>
+</tr>
+<tr class="gradeA">
+<td>1645</td>
+<td>年付押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河西 挂甲寺</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>149.5平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>80平方米</td>
+<td>津南 津南八里台</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>110平方米</td>
+<td>塘沽 塘沽新村街</td>
+</tr>
+<tr class="gradeA">
+<td>4200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>59平方米</td>
+<td>和平 劝业场</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>86.1平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>1550</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>45平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>15000</td>
+<td>年付</td>
+<td>5室2厅2卫</td>
+<td>234平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>90平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>54.7平方米</td>
+<td>塘沽 渤海石油街</td>
+</tr>
+<tr class="gradeA">
+<td>10000</td>
+<td>付3押1</td>
+<td>4室2厅2卫</td>
+<td>181平方米</td>
+<td>河西 梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>107.4平方米</td>
+<td>东丽 大毕庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>河西 柳林</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>39平方米</td>
+<td>塘沽 塘沽新村街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>74.6平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87.2平方米</td>
+<td>津南 津南八里台</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>64.7平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>83.7平方米</td>
+<td>津南</td>
+</tr>
+<tr class="gradeA">
+<td>6000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>111平方米</td>
+<td>河西 桃园街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>95平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>2550</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>93平方米</td>
+<td>塘沽 解放路街</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>1室2厅1卫</td>
+<td>61.7平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>5500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>145平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>河东 上杭路</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>30平方米</td>
+<td>北辰 瑞景街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>48.8平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>塘沽 向阳街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付1押1</td>
+<td>3室1厅2卫</td>
+<td>80.8平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>89平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>84平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>37.9平方米</td>
+<td>河西 马场道</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>面议</td>
+<td>3室2厅2卫</td>
+<td>118平方米</td>
+<td>东丽 张贵庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>30平方米</td>
+<td>西青 新梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>30平方米</td>
+<td>河北 宁园街</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>77平方米</td>
+<td>和平 和平周边</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>560</td>
+<td>付1押1</td>
+<td>3室1厅1卫</td>
+<td>16平方米</td>
+<td>西青 精武</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>90平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>70平方米</td>
+<td>塘沽 渤海石油街</td>
+</tr>
+<tr class="gradeA">
+<td>4980</td>
+<td>付1押1</td>
+<td>4室2厅2卫</td>
+<td>244平方米</td>
+<td>开发区 第五大街</td>
+</tr>
+<tr class="gradeA">
+<td>7500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>89.5平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>58.9平方米</td>
+<td>塘沽 解放路街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>滨海新区 滨海城区</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>59.8平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>100平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>62平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>93平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>6000</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>66.3平方米</td>
+<td>和平 体育馆</td>
+</tr>
+<tr class="gradeA">
+<td>4600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>83.7平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38平方米</td>
+<td>南开 华苑</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>72.4平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>河东 常州道</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>93平方米</td>
+<td>西青 李七庄</td>
+</tr>
+<tr class="gradeA">
+<td>800</td>
+<td>付1押1</td>
+<td>3室1厅2卫</td>
+<td>32平方米</td>
+<td>开发区 第一大街</td>
+</tr>
+<tr class="gradeA">
+<td>7000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90.8平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>750</td>
+<td>付1押1</td>
+<td>3室1厅1卫</td>
+<td>19.8平方米</td>
+<td>河北 宁园街</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>93.3平方米</td>
+<td>西青 李七庄</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>90.3平方米</td>
+<td>西青 李七庄</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>滨海新区 滨海城区</td>
+</tr>
+<tr class="gradeA">
+<td>7000</td>
+<td>付3押1</td>
+<td>3室1厅2卫</td>
+<td>115.7平方米</td>
+<td>和平 劝业场</td>
+</tr>
+<tr class="gradeA">
+<td>650</td>
+<td>付1押1</td>
+<td>3室1厅1卫</td>
+<td>20平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>140平方米</td>
+<td>塘沽</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>93平方米</td>
+<td>塘沽 解放路街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>96.8平方米</td>
+<td>西青 李七庄</td>
+</tr>
+<tr class="gradeA">
+<td>850</td>
+<td>付1押1</td>
+<td>3室1厅2卫</td>
+<td>30平方米</td>
+<td>开发区 第二大街</td>
+</tr>
+<tr class="gradeA">
+<td>788</td>
+<td>付1押1</td>
+<td>3室1厅2卫</td>
+<td>25平方米</td>
+<td>开发区 第二大街</td>
+</tr>
+<tr class="gradeA">
+<td>850</td>
+<td>付1押1</td>
+<td>3室1厅1卫</td>
+<td>20平方米</td>
+<td>南开 天拖南</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>750</td>
+<td>付1押1</td>
+<td>3室2厅2卫</td>
+<td>15平方米</td>
+<td>西青 大寺</td>
+</tr>
+<tr class="gradeA">
+<td>7300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>92平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>94.1平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>8300</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>158.7平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>39平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>39.2平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>24.5平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>44.6平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>28.3平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>25.4平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>103.3平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>43平方米</td>
+<td>河西 越秀路</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>36.9平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>3700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65.5平方米</td>
+<td>和平 南市</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>河西 桃园街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室0厅1卫</td>
+<td>22.4平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>东丽</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>37.6平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42.1平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>1750</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>61平方米</td>
+<td>河西 柳林</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>62.9平方米</td>
+<td>北辰 普东街</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>52.7平方米</td>
+<td>河西 天塔</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>43.6平方米</td>
+<td>南开 长虹街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>71.3平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42.4平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>49.5平方米</td>
+<td>南开 长虹街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td>河东 中山门</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td>河东 中山门</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>83平方米</td>
+<td>津南</td>
+</tr>
+<tr class="gradeA">
+<td>3700</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>106平方米</td>
+<td>红桥 芥园街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>68.5平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>26.9平方米</td>
+<td>河西 友谊路</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>68平方米</td>
+<td>南开 八里台</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>3900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>和平</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>78平方米</td>
+<td>北辰 普东街</td>
+</tr>
+<tr class="gradeA">
+<td>5800</td>
+<td>面议</td>
+<td>4室1厅2卫</td>
+<td>133.6平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>110平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1450</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55.9平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>付3押1</td>
+<td>3室1厅2卫</td>
+<td>180平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>46.8平方米</td>
+<td>河北 望海楼街</td>
+</tr>
+<tr class="gradeA">
+<td>650</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>76平方米</td>
+<td>宝坻 海滨街</td>
+</tr>
+<tr class="gradeA">
+<td>1450</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>39平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>42.5平方米</td>
+<td>河西 越秀路</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>43.2平方米</td>
+<td>河东 大直沽</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>31平方米</td>
+<td>河西 大营门</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>53平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>1620</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>49平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>53.9平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>36.9平方米</td>
+<td>河西 挂甲寺</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>43.2平方米</td>
+<td>河东 大直沽</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>70平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>41平方米</td>
+<td>河西 挂甲寺</td>
+</tr>
+<tr class="gradeA">
+<td>8500</td>
+<td>付3押1</td>
+<td>1室0厅1卫</td>
+<td>47.1平方米</td>
+<td>和平</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>46平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1650</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>24.9平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>33平方米</td>
+<td>河东 常州道</td>
+</tr>
+<tr class="gradeA">
+<td>870</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>43平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34.9平方米</td>
+<td>河西 越秀路</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>61平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>1250</td>
+<td>年付押1</td>
+<td>1室1厅1卫</td>
+<td>70平方米</td>
+<td>东丽 大毕庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>69.8平方米</td>
+<td>东丽 程林街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>53.2平方米</td>
+<td>河西 大营门</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40.3平方米</td>
+<td>河西 友谊路</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>半年付押1</td>
+<td>2室1厅1卫</td>
+<td>89平方米</td>
+<td>东丽</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>57.4平方米</td>
+<td>红桥 丁字沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>63.6平方米</td>
+<td>河北 江都路街</td>
+</tr>
+<tr class="gradeA">
+<td>850</td>
+<td>半年付</td>
+<td>1室1厅1卫</td>
+<td>44.5平方米</td>
+<td>汉沽 汉沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>23.9平方米</td>
+<td>河西 挂甲寺</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>36.9平方米</td>
+<td>塘沽 杭州道街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>22平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>50平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>650</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>40平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>110平方米</td>
+<td>津南</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>71平方米</td>
+<td>河东 二号桥</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河西 天塔</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>76.5平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>106平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>56.2平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>94.5平方米</td>
+<td>宝坻 海滨街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>河西 桃园街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>68平方米</td>
+<td>南开 水上公园</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>21.3平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>半年付押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>东丽 大毕庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>41.4平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>1350</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>31平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>52平方米</td>
+<td>河北 宁园街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>红桥 铃铛阁街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>32.4平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td>北辰 大张庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34平方米</td>
+<td>和平</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34平方米</td>
+<td>和平</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>950</td>
+<td>半年付</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>37.3平方米</td>
+<td>红桥 卲公庄街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>53.3平方米</td>
+<td>南开 长虹街</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>52平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>33平方米</td>
+<td>河西 挂甲寺</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>105平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>101平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>32平方米</td>
+<td>津南</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>32.2平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>46.5平方米</td>
+<td>南开 兴南街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅0卫</td>
+<td>58.6平方米</td>
+<td>塘沽 渤海石油街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>67平方米</td>
+<td>河西 柳林</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>127平方米</td>
+<td>武清</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38平方米</td>
+<td>北辰</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>66.5平方米</td>
+<td>北辰</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>56平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>61平方米</td>
+<td>大港 迎宾街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>64平方米</td>
+<td>北辰</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>36.9平方米</td>
+<td>南开 兴南街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>57.5平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>1650</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>22平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>59平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>55.9平方米</td>
+<td>河西 桃园街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河北 王串场街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>57平方米</td>
+<td>北辰 集贤里</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>50.1平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>59.9平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38平方米</td>
+<td>塘沽 杭州道街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>50平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>58平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>72.2平方米</td>
+<td>河北 望海楼街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>半年付</td>
+<td>3室2厅2卫</td>
+<td>118.4平方米</td>
+<td>北辰 大张庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>92平方米</td>
+<td>北辰 普东街</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>84平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室0厅1卫</td>
+<td>30平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>86.2平方米</td>
+<td>宝坻 钰华街</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>97平方米</td>
+<td>南开 八里台</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>58.6平方米</td>
+<td>西区</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>31平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>78平方米</td>
+<td>西青 杨柳青</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>103平方米</td>
+<td>西青</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>48平方米</td>
+<td>南开 长虹街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>91.3平方米</td>
+<td>蓟县</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>96.7平方米</td>
+<td>南开 华苑</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>113平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付1押1</td>
+<td>2室0厅1卫</td>
+<td>60平方米</td>
+<td>南开 水上公园</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>99.5平方米</td>
+<td>塘沽 西大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>58平方米</td>
+<td>北辰 果园新村</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>66.3平方米</td>
+<td>红桥 丁字沽街</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>58.4平方米</td>
+<td>河西 下瓦房</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室2厅2卫</td>
+<td>116.4平方米</td>
+<td>北辰 天穆</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河东 唐口</td>
+</tr>
+<tr class="gradeA">
+<td>833</td>
+<td>半年付</td>
+<td>2室1厅1卫</td>
+<td>77平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>58.8平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>73平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>52平方米</td>
+<td>西青 杨柳青</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>37.5平方米</td>
+<td>和平 体育馆</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>68.2平方米</td>
+<td>河北 王串场街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>109平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>南开 兴南街</td>
+</tr>
+<tr class="gradeA">
+<td>450</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>86平方米</td>
+<td>宝坻 潮阳街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>62平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>32平方米</td>
+<td>河西 柳林</td>
+</tr>
+<tr class="gradeA">
+<td>3800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>53平方米</td>
+<td>河西 下瓦房</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>45平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>红桥 西于庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60.8平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>70.3平方米</td>
+<td>开发区 第一大街</td>
+</tr>
+<tr class="gradeA">
+<td>1450</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>43.5平方米</td>
+<td>河北 王串场街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>55平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>600</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>30平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1450</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>红桥 丁字沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>53平方米</td>
+<td>南开 兴南街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>58.3平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>64平方米</td>
+<td>河东 二号桥</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>43平方米</td>
+<td>红桥 卲公庄街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅2卫</td>
+<td>88平方米</td>
+<td>红桥 卲公庄街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>半年付</td>
+<td>3室2厅1卫</td>
+<td>125平方米</td>
+<td>津南</td>
+</tr>
+<tr class="gradeA">
+<td>3700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>61平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>750</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>16平方米</td>
+<td>西青 侯台</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>年付押1</td>
+<td>2室1厅1卫</td>
+<td>58平方米</td>
+<td>大港 海滨</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>56平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>河西 桃园街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>105.3平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>25.9平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>53平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>600</td>
+<td>付1押1</td>
+<td>1室0厅1卫</td>
+<td>26平方米</td>
+<td>塘沽 西大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80.5平方米</td>
+<td>蓟州 文昌街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>66平方米</td>
+<td>河西 尖山路</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河东 向阳楼</td>
+</tr>
+<tr class="gradeA">
+<td>5200</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>91平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>140平方米</td>
+<td>武清 黄庄街</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>100平方米</td>
+<td>西青 李七庄</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>123.1平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>24.9平方米</td>
+<td>河西 越秀路</td>
+</tr>
+<tr class="gradeA">
+<td>2650</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>3700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>67平方米</td>
+<td>河西 友谊路</td>
+</tr>
+<tr class="gradeA">
+<td>3700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>67平方米</td>
+<td>河西 友谊路</td>
+</tr>
+<tr class="gradeA">
+<td>850</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>57平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>105平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>77平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>1782</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>41平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>4100</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>43.6平方米</td>
+<td>河西 天塔</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>67平方米</td>
+<td>塘沽 西大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>3100</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td>和平</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>36.1平方米</td>
+<td>河东 大直沽</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>62平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td>河西 桃园街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>51.2平方米</td>
+<td>河西 马场道</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>53.8平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1390</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>89平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>44.2平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>43平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>93平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>77平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>99平方米</td>
+<td>大港 迎宾街</td>
+</tr>
+<tr class="gradeA">
+<td>1350</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>37平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>1190</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>30平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室0厅1卫</td>
+<td>65平方米</td>
+<td>河西 大营门</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48.7平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>57平方米</td>
+<td>河西 柳林</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>50平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>3800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>52.3平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>64.6平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1250</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>98平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>58.7平方米</td>
+<td>河北 宁园街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>28平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押2</td>
+<td>1室1厅1卫</td>
+<td>22平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>75平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>5000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>东丽</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>105平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>红桥 铃铛阁街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河东 向阳楼</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48.3平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>105平方米</td>
+<td>大港 迎宾街</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>107.9平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>72平方米</td>
+<td>蓟州 文昌街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>120平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>120平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>110.5平方米</td>
+<td>北辰 集贤里</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>南开 兴南街</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>面议</td>
+<td>3室2厅2卫</td>
+<td>140平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>98.7平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60.2平方米</td>
+<td>河北 王串场街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>52平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>54平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河北 新开河街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>40平方米</td>
+<td>南开 八里台</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>109平方米</td>
+<td>津南 津南八里台</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>61.5平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>北辰 天穆</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>58.5平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>河西 梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>43平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>61平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42.7平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>83平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48.8平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>42平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>39.8平方米</td>
+<td>北辰 集贤里</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>96平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>89.9平方米</td>
+<td>宝坻 大白街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42.5平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>78平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34.9平方米</td>
+<td>河西 大营门</td>
+</tr>
+<tr class="gradeA">
+<td>950</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>43平方米</td>
+<td>西青 大寺</td>
+</tr>
+<tr class="gradeA">
+<td>1650</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>52平方米</td>
+<td>塘沽 大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>72平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>年付押1</td>
+<td>1室1厅1卫</td>
+<td>67平方米</td>
+<td>东丽 大毕庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>850</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>49平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>98.7平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td>大港 迎新街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>66.4平方米</td>
+<td>塘沽 渤海石油街</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50.9平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>半年付</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>大港 大港周边</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>半年付押1</td>
+<td>2室1厅1卫</td>
+<td>106平方米</td>
+<td>宝坻 海滨街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>79.5平方米</td>
+<td>塘沽 滨海高新区</td>
+</tr>
+<tr class="gradeA">
+<td>1850</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>116平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>4550</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>106平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>119.7平方米</td>
+<td>塘沽 渤海石油街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>109.4平方米</td>
+<td>北辰 果园新村</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>27.4平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>55.7平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80.1平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>54平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>半年付押1</td>
+<td>2室1厅1卫</td>
+<td>92平方米</td>
+<td>津南 辛庄</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td>河西 尖山路</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>40平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1455</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>37平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>61平方米</td>
+<td>红桥 丁字沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>62.8平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>44.9平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>76.2平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>49平方米</td>
+<td>西青 精武</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50.1平方米</td>
+<td>和平 南市</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>109平方米</td>
+<td>北辰 果园新村</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>64平方米</td>
+<td>河东</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>43.7平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>61平方米</td>
+<td>红桥 西于庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>30.2平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>57平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>105平方米</td>
+<td>东丽 新立镇</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>92平方米</td>
+<td>塘沽 解放路街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>80平方米</td>
+<td>宝坻 宝平街</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>107平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>37平方米</td>
+<td>塘沽 向阳街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40.6平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>92平方米</td>
+<td>武清</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>97平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>86平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>39平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>950</td>
+<td>半年付</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>北辰 集贤里</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>75.4平方米</td>
+<td>河北 望海楼街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>塘沽 解放路街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>28平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90.9平方米</td>
+<td>塘沽 新河街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>25.2平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>95平方米</td>
+<td>北辰 普东街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>3100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>77.5平方米</td>
+<td>南开 长虹街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河西 桃园街</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>60.5平方米</td>
+<td>和平 体育馆</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>94平方米</td>
+<td>西青 杨柳青</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>101.1平方米</td>
+<td>东丽 津塘路</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室2厅3卫</td>
+<td>108平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>100平方米</td>
+<td>津南 北闸口</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>107平方米</td>
+<td>大港 世纪大道</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>36.6平方米</td>
+<td>河西 越秀路</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>83.8平方米</td>
+<td>津南</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>125平方米</td>
+<td>西青 杨柳青</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>红桥 丁字沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>24.7平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>蓟州 渔阳镇</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>59.3平方米</td>
+<td>东丽 万新街</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>95平方米</td>
+<td>宝坻 钰华街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>82平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>年付</td>
+<td>2室2厅1卫</td>
+<td>96平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80.4平方米</td>
+<td>红桥 西营门街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>大港 大港周边</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>114.8平方米</td>
+<td>东丽 津塘路</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>84平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34.3平方米</td>
+<td>南开 长虹街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>3450</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>109平方米</td>
+<td>河东 上杭路</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>半年付</td>
+<td>2室1厅1卫</td>
+<td>83平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>67平方米</td>
+<td>河北 新开河街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>93平方米</td>
+<td>西青 杨柳青</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>1室0厅1卫</td>
+<td>58.9平方米</td>
+<td>和平 南市</td>
+</tr>
+<tr class="gradeA">
+<td>5000</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>96平方米</td>
+<td>和平 南市</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>98平方米</td>
+<td>河北 王串场街</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>年付</td>
+<td>1室1厅1卫</td>
+<td>63平方米</td>
+<td>蓟州 文昌街</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>半年付</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>津南</td>
+</tr>
+<tr class="gradeA">
+<td>3800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>99.7平方米</td>
+<td>南开 天拖南</td>
+</tr>
+<tr class="gradeA">
+<td>3700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>57.9平方米</td>
+<td>河西 下瓦房</td>
+</tr>
+<tr class="gradeA">
+<td>1350</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>64.4平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>30.1平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>5500</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>109平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>4室2厅2卫</td>
+<td>173.8平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>4室2厅2卫</td>
+<td>173平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55.3平方米</td>
+<td>河东 上杭路</td>
+</tr>
+<tr class="gradeA">
+<td>800</td>
+<td>半年付</td>
+<td>3室1厅1卫</td>
+<td>89平方米</td>
+<td>宝坻 潮阳街</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>72平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>97平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>5800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>66平方米</td>
+<td>和平时光</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>33平方米</td>
+<td>南开 天拖南</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>78平方米</td>
+<td>开发区 第三大街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>33.5平方米</td>
+<td>东丽 津塘路</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>58平方米</td>
+<td>河西 大营门</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>96平方米</td>
+<td>东丽 张贵庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1250</td>
+<td>年付押1</td>
+<td>1室1厅1卫</td>
+<td>69平方米</td>
+<td>东丽 大毕庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>83平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>83平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>67平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>95平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>3400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>51平方米</td>
+<td>河西 天塔</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>2050</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>41平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>59.3平方米</td>
+<td>北辰 天穆</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>半年付</td>
+<td>2室2厅1卫</td>
+<td>80平方米</td>
+<td>武清</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>37.7平方米</td>
+<td>南开 兴南街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42平方米</td>
+<td>和平 劝业场</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>60.4平方米</td>
+<td>蓟州 渔阳镇</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>半年付</td>
+<td>2室1厅1卫</td>
+<td>86平方米</td>
+<td>武清 河西务镇</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>33.6平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>北辰 普东街</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>年付</td>
+<td>3室1厅1卫</td>
+<td>114平方米</td>
+<td>宝坻 宝平街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>48.7平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>96平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>41平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34平方米</td>
+<td>红桥 西于庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>88平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>2899</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>93平方米</td>
+<td>武清 城关镇</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>38平方米</td>
+<td>南开</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>91平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>河北 宁园街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34平方米</td>
+<td>河西 大营门</td>
+</tr>
+<tr class="gradeA">
+<td>1350</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>60.6平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>23平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>50.1平方米</td>
+<td>河东 上杭路</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>106.4平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>7500</td>
+<td>付3押1</td>
+<td>4室2厅2卫</td>
+<td>247平方米</td>
+<td>开发区 第二大街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>半年付</td>
+<td>2室1厅1卫</td>
+<td>52平方米</td>
+<td>宁河 芦台镇</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>46.4平方米</td>
+<td>河东 常州道</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>5800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>91.3平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>54.2平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>85平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>46.9平方米</td>
+<td>河西 友谊路</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>17000</td>
+<td>面议</td>
+<td>3室2厅2卫</td>
+<td>162.4平方米</td>
+<td>和平 体育馆</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>50平方米</td>
+<td>河西 越秀路</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>59.6平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>50平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>106平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>39.7平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>999</td>
+<td>年付</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>宁河 芦台镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>北辰 果园新村</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>73平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>1850</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>62平方米</td>
+<td>西青 新梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>87平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>78平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38.3平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>半年付</td>
+<td>2室1厅1卫</td>
+<td>97平方米</td>
+<td>武清 黄庄街</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>113.5平方米</td>
+<td>一二期</td>
+</tr>
+<tr class="gradeA">
+<td>1699</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>42平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>54.5平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>79.9平方米</td>
+<td>东区</td>
+</tr>
+<tr class="gradeA">
+<td>1450</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>73平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>2999</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>半年付押1</td>
+<td>3室2厅1卫</td>
+<td>118平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80.6平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>红桥 西于庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>44.2平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>115平方米</td>
+<td>河北 新开河街</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>河西 天塔</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>39.8平方米</td>
+<td>河西 友谊路</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>37.3平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>4100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>59平方米</td>
+<td>北辰 瑞景街</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>78.3平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>70平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>3室1厅2卫</td>
+<td>102.8平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>53.9平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td>武清 黄庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>98平方米</td>
+<td>开发区 第三大街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>大港 世纪大道</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>61平方米</td>
+<td>武清</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>76.5平方米</td>
+<td>红桥 芥园街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>99平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>94平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>106平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>59平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>半年付押1</td>
+<td>2室2厅1卫</td>
+<td>73平方米</td>
+<td>南区</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>53平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>102平方米</td>
+<td>宝坻 海滨街</td>
+</tr>
+<tr class="gradeA">
+<td>5600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>180.8平方米</td>
+<td>河北 望海楼街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>99平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>82平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>131.7平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>81.4平方米</td>
+<td>东丽 地毯路</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>51平方米</td>
+<td>河西 下瓦房</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>57平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河北</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>102平方米</td>
+<td>宝坻 海滨街</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>99平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>91.2平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>131.7平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>72平方米</td>
+<td>东丽 张贵庄街</td>
+</tr>
+<tr class="gradeA">
+<td>4200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>57平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>3800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>96平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>86平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>塘沽 杭州道街</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>150平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>66.8平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>99平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>91平方米</td>
+<td>河北 江都路街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>94平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>140平方米</td>
+<td>北区</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>55.1平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>70平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>83平方米</td>
+<td>北辰 北辰周边</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>年付押1</td>
+<td>3室1厅1卫</td>
+<td>100平方米</td>
+<td>南区</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>92平方米</td>
+<td>宁河 芦台镇</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>41平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>32平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河西 天塔</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>70平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室0厅1卫</td>
+<td>68平方米</td>
+<td>塘沽 西大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>78平方米</td>
+<td>北辰 大张庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅2卫</td>
+<td>55平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>54平方米</td>
+<td>南开 黄河道</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>55平方米</td>
+<td>宝坻 朝霞街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付1押1</td>
+<td>2室2厅1卫</td>
+<td>100平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>43平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>半年付押1</td>
+<td>2室2厅1卫</td>
+<td>99平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>44平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>91平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>87平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>半年付押1</td>
+<td>2室2厅1卫</td>
+<td>100平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>96平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>43.1平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>79平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>41.7平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>53.9平方米</td>
+<td>蓟州 罗庄子镇</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>河北 王串场街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>93平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>南开 兴南街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>3室3厅3卫</td>
+<td>110平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>94平方米</td>
+<td>汉沽 寨上街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>93平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>48平方米</td>
+<td>河西 大营门</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>3室2厅2卫</td>
+<td>98平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河西 柳林</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>89平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>32平方米</td>
+<td>红桥 丁字沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>97平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>55平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>115平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>109.3平方米</td>
+<td>北辰 小淀</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>82平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>59.5平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>53平方米</td>
+<td>红桥 西营门街</td>
+</tr>
+<tr class="gradeA">
+<td>1950</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>红桥 丁字沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85.8平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>70平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>59.2平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>93平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>131.9平方米</td>
+<td>北辰 集贤里</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>88平方米</td>
+<td>河西 梅江</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>66平方米</td>
+<td>红桥 卲公庄街</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>96平方米</td>
+<td>东丽 程林街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86.8平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>70.1平方米</td>
+<td>河北 江都路街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>70平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>河北 王串场街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>68平方米</td>
+<td>塘沽 新城镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48.4平方米</td>
+<td>塘沽 西大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>6600</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>105平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86.8平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>43平方米</td>
+<td>河北 靖江路街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>河北 王串场街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>117平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>3室2厅2卫</td>
+<td>129平方米</td>
+<td>宝坻 宝平街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>56平方米</td>
+<td>开发区 第三大街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>49平方米</td>
+<td>和平 南市</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>年付</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>44.9平方米</td>
+<td>河西 挂甲寺</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>半年付押1</td>
+<td>3室2厅1卫</td>
+<td>120平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>88.2平方米</td>
+<td>开发区 第三大街</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>63.3平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>86平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>94平方米</td>
+<td>河东 上杭路</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>半年付押1</td>
+<td>2室1厅1卫</td>
+<td>66平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>100平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>78.5平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>4300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>61平方米</td>
+<td>和平 劝业场</td>
+</tr>
+<tr class="gradeA">
+<td>4300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>61平方米</td>
+<td>和平 劝业场</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>65.6平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87.8平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>宝坻 海滨街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>63.2平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>55.6平方米</td>
+<td>红桥 西营门街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>95平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>河西 下瓦房</td>
+</tr>
+<tr class="gradeA">
+<td>4200</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>133平方米</td>
+<td>南区</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室2厅1卫</td>
+<td>60平方米</td>
+<td>开发区 第五大街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>97平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>89平方米</td>
+<td>西青 海泰高新区</td>
+</tr>
+<tr class="gradeA">
+<td>1350</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87.4平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>96平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>91平方米</td>
+<td>开发区 第五大街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>红桥 铃铛阁街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>91平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>92平方米</td>
+<td>滨海新区 滨海城区</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付1押1</td>
+<td>3室2厅2卫</td>
+<td>165平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>123平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1350</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87.4平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>半年付押1</td>
+<td>1室1厅1卫</td>
+<td>78平方米</td>
+<td>武清 徐官屯街</td>
+</tr>
+<tr class="gradeA">
+<td>5200</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>128.1平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>120平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>58平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>半年付</td>
+<td>2室2厅1卫</td>
+<td>78平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>6200</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>117平方米</td>
+<td>和平</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>84平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付2押1</td>
+<td>2室2厅1卫</td>
+<td>85平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>128平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>68平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>85.6平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河西 挂甲寺</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>72平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>北辰 集贤里</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>71.8平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>1250</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>51.8平方米</td>
+<td>滨海新区 滨海城区</td>
+</tr>
+<tr class="gradeA">
+<td>1750</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>48.9平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>100平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室2厅2卫</td>
+<td>49.8平方米</td>
+<td>河北 新开河街</td>
+</tr>
+<tr class="gradeA">
+<td>1100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>29平方米</td>
+<td>河东 富民路</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1750</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>82平方米</td>
+<td>西青 精武</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>半年付押1</td>
+<td>2室2厅1卫</td>
+<td>87平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>半年付押1</td>
+<td>3室2厅1卫</td>
+<td>115平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>55平方米</td>
+<td>红桥 西营门街</td>
+</tr>
+<tr class="gradeA">
+<td>3100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>54.5平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>8500</td>
+<td>付3押1</td>
+<td>3室2厅3卫</td>
+<td>203.3平方米</td>
+<td>河西 梅江</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>塘沽 大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>12000</td>
+<td>付3押1</td>
+<td>3室2厅3卫</td>
+<td>181平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河东</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>94平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>32平方米</td>
+<td>河西 柳林</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>80平方米</td>
+<td>北辰 小淀</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>三期</td>
+</tr>
+<tr class="gradeA">
+<td>3700</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>91平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>8000</td>
+<td>付3押1</td>
+<td>2室2厅2卫</td>
+<td>149平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>97平方米</td>
+<td>河西 梅江</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>55平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55.7平方米</td>
+<td>北辰 普东街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>54.5平方米</td>
+<td>河西 陈塘庄</td>
+</tr>
+<tr class="gradeA">
+<td>5500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>67平方米</td>
+<td>和平 体育馆</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>52平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>76.4平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>6500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>138平方米</td>
+<td>和平 南市</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>58.2平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>48平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>100平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>63平方米</td>
+<td>北辰 普东街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>43.1平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>97平方米</td>
+<td>宁河 芦台镇</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>半年付</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>宝坻 宝平街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>97平方米</td>
+<td>宁河 芦台镇</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>半年付</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>宝坻 宝平街</td>
+</tr>
+<tr class="gradeA">
+<td>1498</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>67.9平方米</td>
+<td>红桥 芥园街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>70平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>89.8平方米</td>
+<td>东丽 张贵庄街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>98平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>147.5平方米</td>
+<td>河东 春华街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>38.2平方米</td>
+<td>塘沽 杭州道街</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>65平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>4200</td>
+<td>年付押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>99.5平方米</td>
+<td>河北 新开河街</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87.6平方米</td>
+<td>红桥 大胡同街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>52平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>东丽 大毕庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>71平方米</td>
+<td>西青 大寺</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>90平方米</td>
+<td>南区</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>103平方米</td>
+<td>西青 侯台</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>65平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>89平方米</td>
+<td>塘沽 大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>91平方米</td>
+<td>武清 大王古庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付3押1</td>
+<td>1室0厅1卫</td>
+<td>30平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>年付</td>
+<td>2室2厅1卫</td>
+<td>86平方米</td>
+<td>武清 黄庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>37平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>76.9平方米</td>
+<td>塘沽 解放路街</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86.1平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>37平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>76.9平方米</td>
+<td>塘沽 解放路街</td>
+</tr>
+<tr class="gradeA">
+<td>1450</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>39平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>6500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>150.4平方米</td>
+<td>和平 南市</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87.6平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>5200</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>155平方米</td>
+<td>南开 八里台</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>北辰 集贤里</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>99平方米</td>
+<td>河西 越秀路</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>86平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>5800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>140平方米</td>
+<td>河西 大营门</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>87平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>30平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>85平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>94平方米</td>
+<td>汉沽 汉沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>118平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>87平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>3100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>87平方米</td>
+<td>二期</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>85平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>4600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>108.7平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>101平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>95平方米</td>
+<td>西青 大寺</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>125平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>91平方米</td>
+<td>天成轩</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>年付</td>
+<td>3室2厅1卫</td>
+<td>118平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>4100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>75平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>43平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>44.4平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室2厅2卫</td>
+<td>110.6平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>69平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>7000</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>155平方米</td>
+<td>河北 望海楼街</td>
+</tr>
+<tr class="gradeA">
+<td>1350</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>59.2平方米</td>
+<td>北辰 天穆</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>88平方米</td>
+<td>滨海新区 滨海城区</td>
+</tr>
+<tr class="gradeA">
+<td>4700</td>
+<td>付3押1</td>
+<td>5室1厅2卫</td>
+<td>140.8平方米</td>
+<td>河东 大直沽</td>
+</tr>
+<tr class="gradeA">
+<td>5000</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>151.9平方米</td>
+<td>西青 新梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>113平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>81平方米</td>
+<td>北辰 佳荣里街</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>85平方米</td>
+<td>西青 精武</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>101.3平方米</td>
+<td>河西 天塔</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>80平方米</td>
+<td>开发区 第二大街</td>
+</tr>
+<tr class="gradeA">
+<td>8300</td>
+<td>付3押1</td>
+<td>5室2厅2卫</td>
+<td>285平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>78平方米</td>
+<td>塘沽 滨海高新区</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>102平方米</td>
+<td>西青 侯台</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>118平方米</td>
+<td>河东 大直沽</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>82平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>5000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90.5平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>81平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>4300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>89平方米</td>
+<td>西青 李七庄</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>红桥 西沽街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>70平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>3900</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>67平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>93平方米</td>
+<td>北辰 大张庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>76.8平方米</td>
+<td>北辰 双街镇</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室2厅2卫</td>
+<td>68平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>110平方米</td>
+<td>北辰 果园新村</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>93平方米</td>
+<td>津南 津南八里台</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>90平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>46平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>100平方米</td>
+<td>塘沽 西大沽街</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>85平方米</td>
+<td>塘沽 解放路街</td>
+</tr>
+<tr class="gradeA">
+<td>3400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>77.5平方米</td>
+<td>南开 广开街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>77.3平方米</td>
+<td>北辰 大张庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td>北区</td>
+</tr>
+<tr class="gradeA">
+<td>3600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>滨海新区 滨海城区</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>58.5平方米</td>
+<td>河北 新开河街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>24.3平方米</td>
+<td>河西 桃园街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>44.9平方米</td>
+<td>河北 宁园街</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>93平方米</td>
+<td>塘沽 工农村街</td>
+</tr>
+<tr class="gradeA">
+<td>4200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>73.8平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87.6平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>3700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>91.3平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>4250</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>95.8平方米</td>
+<td>河北 宁园街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>70平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅0卫</td>
+<td>91平方米</td>
+<td>开发区 第三大街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>99平方米</td>
+<td>河西 柳林</td>
+</tr>
+<tr class="gradeA">
+<td>1850</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>66.9平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>81平方米</td>
+<td>滨海</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>50平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>97平方米</td>
+<td>塘沽 北塘街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>90.4平方米</td>
+<td>西青 张家窝</td>
+</tr>
+<tr class="gradeA">
+<td>2900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>58平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>3200</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>41.2平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>117.1平方米</td>
+<td>北辰 瑞景街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅2卫</td>
+<td>76平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>西青 大寺</td>
+</tr>
+<tr class="gradeA">
+<td>3000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>113平方米</td>
+<td>河东 鲁山道</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>32.1平方米</td>
+<td>和平 南市</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>半年付押1</td>
+<td>2室1厅1卫</td>
+<td>87平方米</td>
+<td>武清 大王古庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>32.5平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>800</td>
+<td>年付</td>
+<td>2室1厅1卫</td>
+<td>80.5平方米</td>
+<td>蓟州 文昌街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>90平方米</td>
+<td>塘沽 渤海石油街</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>58平方米</td>
+<td>滨海新区 滨海城区</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>37.4平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>1750</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>47.4平方米</td>
+<td>河北 望海楼街</td>
+</tr>
+<tr class="gradeA">
+<td>1850</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>49平方米</td>
+<td>东丽 空港经济区</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48.6平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>94平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>61平方米</td>
+<td>汉沽 河西</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>33平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>年付押1</td>
+<td>3室2厅2卫</td>
+<td>118平方米</td>
+<td>蓟县</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>78.8平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>72平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>104平方米</td>
+<td>河西</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>58.4平方米</td>
+<td>红桥 西于庄街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室0厅1卫</td>
+<td>46平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室0厅1卫</td>
+<td>42平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>61.1平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>92.7平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>1550</td>
+<td>付3押1</td>
+<td>2室0厅1卫</td>
+<td>50平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>40平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>100平方米</td>
+<td>蓟州 罗庄子镇</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付1押1</td>
+<td>2室2厅1卫</td>
+<td>93平方米</td>
+<td>开发区 第五大街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>52平方米</td>
+<td>南开 天拖南</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>50平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>汉沽 河西</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87.7平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>57平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>95平方米</td>
+<td>北辰 青光</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>92平方米</td>
+<td>塘沽 渤海石油街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>55平方米</td>
+<td>红桥 西营门街</td>
+</tr>
+<tr class="gradeA">
+<td>3499</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86.6平方米</td>
+<td>河北 建昌道街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>3室2厅2卫</td>
+<td>143平方米</td>
+<td>津南 津南八里台</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>半年付</td>
+<td>1室1厅1卫</td>
+<td>49平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>50平方米</td>
+<td>河东 东新街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>54平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>年付押1</td>
+<td>2室2厅1卫</td>
+<td>95.8平方米</td>
+<td>蓟州 文昌街</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>54平方米</td>
+<td>东丽 华明镇</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>49.7平方米</td>
+<td>红桥 双环邨街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>78平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>1950</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td>东丽 万新街</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>45.5平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>3500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>73平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>98平方米</td>
+<td>大港 迎新街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>91.4平方米</td>
+<td>北辰 果园新村</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>87平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>2650</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>47平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>89平方米</td>
+<td>津南 海河教育园区</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>100平方米</td>
+<td>西青 杨柳青</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>56平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>90.4平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>5200</td>
+<td>面议</td>
+<td>2室1厅1卫</td>
+<td>92.6平方米</td>
+<td>南开 万兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>河西 梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>94.3平方米</td>
+<td>大港 迎宾街</td>
+</tr>
+<tr class="gradeA">
+<td>6000</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>179.9平方米</td>
+<td>河东 一号桥</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>82平方米</td>
+<td>东丽 新立镇</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>98.5平方米</td>
+<td>塘沽 新河街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>108.3平方米</td>
+<td>东丽 东丽湖</td>
+</tr>
+<tr class="gradeA">
+<td>7200</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>74平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>4300</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>122平方米</td>
+<td>南开 天拖南</td>
+</tr>
+<tr class="gradeA">
+<td>6000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>70.9平方米</td>
+<td>和平 劝业场</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>64平方米</td>
+<td>红桥 西营门街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>62平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>98平方米</td>
+<td>西青 大寺</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>75平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>109平方米</td>
+<td>塘沽 塘沽新村街</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>47.3平方米</td>
+<td>南开 嘉陵道</td>
+</tr>
+<tr class="gradeA">
+<td>3400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>88平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付1押1</td>
+<td>2室1厅1卫</td>
+<td>81平方米</td>
+<td>西青 中北</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>71平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>5000</td>
+<td>付3押1</td>
+<td>2室2厅2卫</td>
+<td>130平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付1押1</td>
+<td>2室2厅1卫</td>
+<td>102平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>80平方米</td>
+<td>西青 大寺</td>
+</tr>
+<tr class="gradeA">
+<td>4100</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>86平方米</td>
+<td>南开 鼓楼</td>
+</tr>
+<tr class="gradeA">
+<td>2350</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>76.8平方米</td>
+<td>塘沽 新港街</td>
+</tr>
+<tr class="gradeA">
+<td>2200</td>
+<td>面议</td>
+<td>3室2厅1卫</td>
+<td>95平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>53.3平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>4000</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>87平方米</td>
+<td>河西 陈塘庄</td>
+</tr>
+<tr class="gradeA">
+<td>3800</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>93平方米</td>
+<td>河西 梅江南</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>98平方米</td>
+<td>西青 精武</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>103平方米</td>
+<td>塘沽 滨海高新区</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>87平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>2600</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>106平方米</td>
+<td>塘沽 胡家园街</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>40平方米</td>
+<td>北辰 宜兴埠</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>99平方米</td>
+<td>汉沽 汉沽街</td>
+</tr>
+<tr class="gradeA">
+<td>1000</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>78.8平方米</td>
+<td>北辰 北仓</td>
+</tr>
+<tr class="gradeA">
+<td>3300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>127平方米</td>
+<td>开发区 中新生态城</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>面议</td>
+<td>2室2厅1卫</td>
+<td>80.3平方米</td>
+<td>武清 杨村街</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>85平方米</td>
+<td>静海 团泊镇</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>85平方米</td>
+<td>津南 双港</td>
+</tr>
+<tr class="gradeA">
+<td>7500</td>
+<td>付3押1</td>
+<td>3室2厅2卫</td>
+<td>160平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>17000</td>
+<td>面议</td>
+<td>3室2厅2卫</td>
+<td>162.4平方米</td>
+<td>和平 体育馆</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>72平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>58.4平方米</td>
+<td>红桥 西于庄街</td>
+</tr>
+<tr class="gradeA">
+<td>600</td>
+<td>付3押1</td>
+<td>1室0厅1卫</td>
+<td>26平方米</td>
+<td>北辰 果园新村</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室2厅1卫</td>
+<td>61.5平方米</td>
+<td>北辰</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室2厅2卫</td>
+<td>48.9平方米</td>
+<td>商住楼</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>河东 向阳楼</td>
+</tr>
+<tr class="gradeA">
+<td>600</td>
+<td>面议</td>
+<td>1室1厅1卫</td>
+<td>57平方米</td>
+<td>宝坻 霍各庄镇</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>3室2厅1卫</td>
+<td>112平方米</td>
+<td>北辰 小淀</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付1押1</td>
+<td>1室1厅1卫</td>
+<td>36.5平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60平方米</td>
+<td>北辰 普东街</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>57.5平方米</td>
+<td>河北 光复道街</td>
+</tr>
+<tr class="gradeA">
+<td>1900</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>90平方米</td>
+<td>津南 咸水沽</td>
+</tr>
+<tr class="gradeA">
+<td>2000</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>69平方米</td>
+<td>河东 大王庄</td>
+</tr>
+<tr class="gradeA">
+<td>1300</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48平方米</td>
+<td>河东 向阳楼</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>72平方米</td>
+<td>河东 二号桥</td>
+</tr>
+<tr class="gradeA">
+<td>2800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>82平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>38平方米</td>
+<td>和平 南营门</td>
+</tr>
+<tr class="gradeA">
+<td>1200</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>35平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>45平方米</td>
+<td>河北 鸿顺里街</td>
+</tr>
+<tr class="gradeA">
+<td>2400</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>58.3平方米</td>
+<td>南开 王顶堤</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>34平方米</td>
+<td>河东 中山门</td>
+</tr>
+<tr class="gradeA">
+<td>2500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>60平方米</td>
+<td>和平 新兴街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>23.9平方米</td>
+<td>南开 向阳路</td>
+</tr>
+<tr class="gradeA">
+<td>1600</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>60.4平方米</td>
+<td>河北 靖江路街</td>
+</tr>
+<tr class="gradeA">
+<td>1800</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>42.9平方米</td>
+<td>南开 学府街</td>
+</tr>
+<tr class="gradeA">
+<td>4500</td>
+<td>付3押1</td>
+<td>2室2厅1卫</td>
+<td>102平方米</td>
+<td> </td>
+</tr>
+<tr class="gradeA">
+<td>2700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55.5平方米</td>
+<td>红桥 铃铛阁街</td>
+</tr>
+<tr class="gradeA">
+<td>3900</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>73.9平方米</td>
+<td>南开 体育中心</td>
+</tr>
+<tr class="gradeA">
+<td>2100</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>53平方米</td>
+<td>西青 李七庄</td>
+</tr>
+<tr class="gradeA">
+<td>1500</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>48.2平方米</td>
+<td>河西 小海地</td>
+</tr>
+<tr class="gradeA">
+<td>2300</td>
+<td>付3押1</td>
+<td>3室1厅1卫</td>
+<td>92平方米</td>
+<td>河北 铁东路街</td>
+</tr>
+<tr class="gradeA">
+<td>1700</td>
+<td>付3押1</td>
+<td>2室1厅1卫</td>
+<td>55平方米</td>
+<td>红桥 咸阳北路街</td>
+</tr>
+<tr class="gradeA">
+<td>1400</td>
+<td>付3押1</td>
+<td>1室1厅1卫</td>
+<td>46平方米</td>
+<td>塘沽 塘沽新村街</td>
+</tr>
+
+                                </tbody>
+                            </table>
+                            <!-- /.table-responsive -->
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+            <!-- /.row -->
+            2023南开计网实习实训人工智能13组 <a target="_blank" href="https://github.com/Koross2003/anjuke_DataAnalysis_SimpleChatbot">@GitHub地址</a>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static 'vendor/metisMenu/metisMenu.min.js' %}"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="{% static 'vendor/datatables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables-plugins/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables-responsive/dataTables.responsive.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'dist/js/sb-admin-2.js' %}"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+
+</body>
+
+</html>

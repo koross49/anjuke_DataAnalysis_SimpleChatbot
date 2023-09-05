@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>计网实习实训</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'vendor/metisMenu/metisMenu.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/sb-admin-2.css' %}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="{% static 'vendor/morrisjs/morris.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <script src="{% static 'js/echarts.min.js' %}"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #box1 {
+      /* 设置上下外边距 80px 左右居中 */
+      margin: 80px auto;
+      width: 1500px;
+      height: 600px;
+    }
+    #box2 {
+      /* 设置上下外边距 80px 左右居中 */
+      margin: 80px auto;
+      width: 8000px auto;
+      height: 500px;
+    }
+    #box3 {
+      margin: 20px auto;
+      width: 1000px;
+      height: 400px;
+    }
+    #box4 {
+      margin: 20px auto;
+      width: 1000px;
+      height: 400px;
+    }
+    #box5 {
+      margin: 80px auto;
+      width: 1200px;
+      height: 600px;
+    }
+    #box6 {
+      margin: 80px auto;
+      width: 1200px;
+      height: 600px;
+    }
+    #box7 {
+      margin: 80px auto;
+      width: 1200px;
+      height: 600px;
+    }
+    #box8 {
+      margin: 80px auto;
+      width: 1200px;
+      height: 600px;
+    }
+  </style>
+
+<body>
+    {% load static %}
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index">安居客天津租房数据分析</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                        
+                        <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 图表<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="flot">天津市租房信息</a>
+                                </li>
+                                <li>
+                                    <a href="morris">各区租房信息</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="tables"><i class="fa fa-table fa-fw"></i> 表格</a>
+                        </li>
+
+                        <li>
+                            <a href="chatbot"><i class="fa fa-edit fa-fw"></i> ChatBot</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">City</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            天津市各区域租金均价分布图
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box1">
+                            <script>
+  var myChart = echarts.init(document.querySelector('#box1'));
+  var option = {
+    // 修改图表柱形颜色为 #2f89cf
+    color: ['#2f89cf'],
+    // 修改主标题
+    title: {
+      text: '天津各区域租金均价分布图',
+
+      textStyle: {
+        color: '#000000',
+		fontSize: "25",
+
+      },
+	  left: 'center',
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
+      },
+    },
+    // 修改图表大小 top 为 10%，right 为 4%，bottom 为 10%
+    grid: {
+      top: '10%',
+      right: '4%',
+      bottom: '10%',
+      containLabel: true,
+    },
+    xAxis: [
+        {
+
+            type: 'category',
+            // 修改数据
+            data: ["AC区", "一二期区", "三期区", "东丽区", "东区", "二期区", "其他区", "北区","南区","南开区","和平区", "平时光区", "商住楼区", "塘沽区", "大港区", "天成轩区", "宁河区", "宝坻区", "开发区", "武清区", "汉沽区", "河东区", "河西区", "津南区", "滨海区", "滨海新区", "红桥区", "蓟县区", "蓟州区", "西区", "西青区", "静海区"],
+            axisTick: {
+                alignWithLabel: true
+            },
+            axisLabel: {
+                // 设置 x 轴标签文字样式
+                // x 轴的文字颜色和大小
+                color: "#A9A9A9",
+                fontSize: "16",
+				rotate: -25,// 旋转角度
+            },
+            axisLine: {
+              // X 轴线的样式设置为不显示
+                show: false,
+            },
+        }
+    ],
+    yAxis: [
+      {
+	    name: '租金均价/(元)',
+		nameLocation: 'center',
+		nameRotate: 90, // y轴name旋转90度 使其垂直
+		nameGap: 70,  // y轴name与横纵坐标轴线的间距
+		nameTextStyle:{
+			color: '#A9A9A9',
+			fontSize: '25',
+		},
+        type: 'value',
+        // y 轴文字标签样式
+        axisLabel: {
+          color: '#A9A9A9',
+          fontSize: '16',
+        },
+        axisLine: {
+          // y 轴线条样式
+          lineStyle: {
+            color: '#A9A9A9',
+            width: 1,
+          },
+        },
+        // y 轴分隔线样式
+        splitLine: {
+          lineStyle: {
+            color: '#A9A9A9',
+          },
+        },
+      },
+    ],
+	toolbox: {
+		itemGap : 15,
+		itemSize: 20,
+		show: true,
+		feature: {
+		  dataZoom: {
+			yAxisIndex: 'none'
+		  },
+		  dataView: { readOnly: false },
+		  magicType: { type: ['line', 'bar'] },
+		  restore: {},
+		  saveAsImage: {}
+		}
+  },
+  animationEasing: 'elasticOut',
+  animationDelayUpdate: function (idx) {
+		return idx * 5;
+	  },
+    series: [
+      {
+		animationDelay: function (idx) {
+			return idx * 100;
+		},
+		legendHoverLink  : true,
+        name: '租金均价',
+        type: 'bar',
+        // 修改柱子宽度
+        barWidth: '45%',
+        // 更换对应数据
+        data: [1400.0,3600.0,2600.0,2070.63,2200.0,3100.0,2024.74,3200.0,1659.68,2650.0,2735.64,4900.94,5800.0,2680.77,1943.1,1563.64,3200.0,1439.8,1083.33,2640.72,1573.94,1241.67,2820.0,2158.99,2706.06,1860.2,1875.0,1992.86,1943.58,1450.0,1188.89,1700.0,2206.0,1236.36],
+        itemStyle: {
+          // 修改柱子圆角
+          barBorderRadius: 3,
+        },
+      },
+    ],
+
+  };
+
+  myChart.setOption(option);
+  const zoomSize = 6;
+  myChart.on('click', function (params) {
+    console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+    myChart.dispatchAction({
+	  type: 'dataZoom',
+	  startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+	  endValue:
+	    dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+    });
+  });
+</script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            天津市租金分布图
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box2">
+                            <script>
+  var myChart = echarts.init(document.querySelector('#box2'));
+  var option = {
+    // 修改图表柱形颜色为 #2f89cf
+    color: ['#2f89cf'],
+    // 修改主标题
+    title: {
+      text: '天津市租金分布图',
+      textStyle: {
+        color: '#000000',
+		fontSize: "25",
+      },
+	  left: 'center',
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
+      },
+    },
+    // 修改图表大小 top 为 10%，right 为 4%，bottom 为 4%
+
+    xAxis: [
+        {
+			name: '租金/元',
+			nameLocation: 'middle',
+			nameGap:'40',
+			nameTextStyle:{
+				color: '#A9A9A9',
+				fontSize: '20',
+			},
+            type: 'category',
+            // 修改数据
+            data: ["450", "950", "1450", "1950", "2450", "2950", "3450", "3950","4450", "4950","5450", "5950","6450", "6950","7450", "7950","8450", "8950","9450", "10450", "10950", "11450", "11950", "12450", "12950", "13450", "13950","14450", "14950","15450", "15950","16450", "16950"],
+            axisTick: {
+                alignWithLabel: true
+            },
+            axisLabel: {
+                // 设置 x 轴标签文字样式
+                // x 轴的文字颜色和大小
+                color: "#A9A9A9",
+                fontSize: "16"
+            },
+            axisLine: {
+              // X 轴线的样式设置为不显示
+                show: false,
+            },
+        }
+    ],
+    yAxis: [
+      {
+		name: '频数/(个)',
+		nameLocation: 'center',
+		nameRotate: 90, // y轴name旋转90度 使其垂直
+		nameGap: 70,  // y轴name与横纵坐标轴线的间距
+		nameTextStyle:{
+			color: '#A9A9A9',
+			fontSize: '20',
+		},
+        type: 'value',
+        // y 轴文字标签样式
+        axisLabel: {
+          color: '#A9A9A9',
+          fontSize: '16',
+        },
+        axisLine: {
+          // y 轴线条样式
+          lineStyle: {
+            color: '#A9A9A9',
+            width: 1,
+          },
+        },
+        // y 轴分隔线样式
+        splitLine: {
+          lineStyle: {
+            color: '#A9A9A9',
+          },
+        },
+      },
+    ],
+	toolbox: {
+		itemGap : 15,
+		itemSize: 20,
+		show: true,
+		feature: {
+		  dataZoom: {
+			yAxisIndex: 'none'
+		  },
+		  dataView: { readOnly: false },
+		  magicType: { type: ['line', 'bar'] },
+		  restore: {},
+		  saveAsImage: {}
+		}
+  },
+  animationEasing: 'elasticOut',
+  animationDelayUpdate: function (idx) {
+		return idx * 5;
+	  },
+    series: [
+      {
+		animationDelay: function (idx) {
+			return idx * 100;
+		},
+		legendHoverLink  : true,
+        name: '数量',
+        type: 'bar',
+        // 修改柱子宽度
+        barWidth: '45%',
+        // 更换对应数据
+        data: [38.0,201.0,314.0,206.0,139.0,59.0,46.0,27.0,18.0,11.0,9.0,6.0,3.0,6.0,3.0,3.0,2.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,2.0],
+        itemStyle: {
+          // 修改柱子圆角
+          barBorderRadius: 3,
+        },
+      },
+    ],
+  };
+  myChart.setOption(option);
+</script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            天津市代表区域代表性户型房源占比
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box3">
+                            <script>
+                                // 初始化实例对象 echarts.init(dom)容器;
+                                var myChart = echarts.init(document.querySelector('#box3'));
+                                // 指定配置项和数据
+                                var option = {
+                                  color: ['#f2debd',
+                                        '#b8d38f',
+                                        '#ddff95',
+                                        '#ff9b6a',
+                                        '#f1b8f1',],
+                                  title: {
+                                    text: '天津市代表区域代表性户型房源占比',
+                                  },
+                                  tooltip: {trigger: 'axis',},
+                                  legend: {
+                                    data: ['1室1厅1卫','2室1厅1卫','2室2厅1卫','3室2厅1卫'],
+                                  },
+                                  xAxis: {
+                                    data: ['南开区', '北辰区', '河西区', '塘沽区', '河北区', '其他区'],
+                                    axisLine: {
+                                          // X 轴线的样式设置为不显示
+                                            show: false,
+                                        },
+                                    axisTick: {
+                                            alignWithLabel: true
+                                        },
+                                        axisLabel: {
+                                            // 设置 x 轴标签文字样式
+                                            // x 轴的文字颜色和大小
+                                            color: "#A9A9A9",
+                                            fontSize: "16",
+                                        },
+
+                                  },
+                                  yAxis: [
+                                  {
+                                    name: '房源占比',
+                                    nameLocation: 'center',
+                                    nameRotate: 90, // y轴name旋转90度 使其垂直
+                                    nameGap: 70,  // y轴name与横纵坐标轴线的间距
+                                    nameTextStyle:{
+                                        color: '#A9A9A9',
+                                        fontSize: '17',
+                                    },
+                                    type: 'value',
+                                    // y 轴文字标签样式
+                                    axisLabel: {
+                                      color: '#A9A9A9',
+                                      fontSize: '12',
+                                    },
+                                    axisLine: {
+                                      // y 轴线条样式
+                                      lineStyle: {
+                                        color: '#A9A9A9',
+                                        width: 1,
+                                      },
+                                    },
+                                    // y 轴分隔线样式
+                                    splitLine: {
+                                      lineStyle: {
+                                        color: '#A9A9A9',
+                                      },
+                                    },
+                                  },
+                                ],
+                                  toolbox: {
+                                    itemGap : 15,
+                                    itemSize: 20,
+                                    show: true,
+                                    feature: {
+                                      dataZoom: {
+                                        yAxisIndex: 'none'
+                                      },
+                                      dataView: { readOnly: false },
+                                      magicType: { type: ['line', 'bar'] },
+                                      restore: {},
+                                      saveAsImage: {}
+                                    }
+                                },
+                                animationEasing: 'elasticOut',
+                                animationDelayUpdate: function (idx) {
+                                    return idx * 5;},
+                                  series: [
+                                    {
+                                      name: '1室1厅1卫',
+                                      type: 'bar',
+                                      data: [0.5271,0.3191,0.5,0.2184,0.4625,0.2468],
+                                      itemStyle: {
+                                          // 修改柱子圆角
+                                          barBorderRadius: 10,
+                                        },
+                                      barWidth: '15%',
+                                      animationDelay: function (idx) {
+                                        return idx * 100;
+                                    },
+                                    },
+                                    {
+                                      name: '2室1厅1卫',
+                                      type: 'bar',
+                                      data: [0.3256,0.3723,0.3778,0.4598,0.4375,0.4935],
+                                      itemStyle: {
+                                          // 修改柱子圆角
+                                          barBorderRadius: 10,
+                                        },
+                                      barWidth: '15%',
+                                      animationDelay: function (idx) {
+                                        return idx * 100;
+                                    },
+                                    },
+                                    {
+                                      name: '2室2厅1卫',
+                                      type: 'bar',
+                                      data: [0.0543,0.0426,0.0556,0.1379,0.0125,0.1039],
+                                      itemStyle: {
+                                          // 修改柱子圆角
+                                          barBorderRadius: 10,
+                                        },
+                                      barWidth: '15%',
+                                      animationDelay: function (idx) {
+                                        return idx * 100;
+                                    },
+                                    },
+                                    {
+                                      name: '3室2厅1卫',
+                                      type: 'bar',
+                                      data: [0.0,0.117,0.0,0.046,0.0,0.039],
+                                      itemStyle: {
+                                          // 修改柱子圆角
+                                          barBorderRadius: 10,
+                                        },
+                                      barWidth: '15%',
+                                      animationDelay: function (idx) {
+                                        return idx * 100;
+                                    },
+                                    },
+                                  ],
+                                };
+                                // 将配置项设置给 echarts 实例对象。
+                                myChart.setOption(option);
+                              </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            天津市代表区域代表性户型租金均价
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box4">
+                            <script>
+    // 初始化实例对象 echarts.init(dom)容器;
+    var myChart = echarts.init(document.querySelector('#box4'));
+    // 指定配置项和数据
+    var option = {
+      color: ['#f2debd',
+			'#b8d38f',
+			'#ddff95',
+			'#ff9b6a',
+			'#f1b8f1',],
+      title: {
+        text: '天津市代表区域代表性户型租金均价',
+      },
+      tooltip: {trigger: 'axis',},
+      legend: {
+        data: ['1室1厅1卫','2室1厅1卫','2室2厅1卫','3室2厅1卫'],
+      },
+      xAxis: {
+        data: ['南开区', '北辰区', '河西区', '塘沽区', '河北区', '其他区'],
+        axisLine: {
+              // X 轴线的样式设置为不显示
+                show: false,
+            },
+		axisTick: {
+                alignWithLabel: true
+            },
+            axisLabel: {
+                // 设置 x 轴标签文字样式
+                // x 轴的文字颜色和大小
+                color: "#A9A9A9",
+                fontSize: "16",
+            },
+
+      },
+      yAxis: [
+      {
+	    name: '房源占比',
+		nameLocation: 'center',
+		nameRotate: 90, // y轴name旋转90度 使其垂直
+		nameGap: 70,  // y轴name与横纵坐标轴线的间距
+		nameTextStyle:{
+			color: '#A9A9A9',
+			fontSize: '17',
+		},
+        type: 'value',
+        // y 轴文字标签样式
+        axisLabel: {
+          color: '#A9A9A9',
+          fontSize: '12',
+        },
+        axisLine: {
+          // y 轴线条样式
+          lineStyle: {
+            color: '#A9A9A9',
+            width: 1,
+          },
+        },
+        // y 轴分隔线样式
+        splitLine: {
+          lineStyle: {
+            color: '#A9A9A9',
+          },
+        },
+      },
+    ],
+	  toolbox: {
+		itemGap : 15,
+		itemSize: 20,
+		show: true,
+		feature: {
+		  dataZoom: {
+			yAxisIndex: 'none'
+		  },
+		  dataView: { readOnly: false },
+		  magicType: { type: ['line', 'bar'] },
+		  restore: {},
+		  saveAsImage: {}
+		}
+	},
+	animationEasing: 'elasticOut',
+	animationDelayUpdate: function (idx) {
+		return idx * 5;},
+      series: [
+        {
+          name: '1室1厅1卫',
+          type: 'bar',
+          data: [0.5271,0.3191,0.5,0.2184,0.4625,0.2468],
+		  itemStyle: {
+			  // 修改柱子圆角
+			  barBorderRadius: 10,
+			},
+		  barWidth: '15%',
+		  animationDelay: function (idx) {
+			return idx * 100;
+		},
+        },
+        {
+          name: '2室1厅1卫',
+          type: 'bar',
+          data: [0.3256,0.3723,0.3778,0.4598,0.4375,0.4935],
+		  itemStyle: {
+			  // 修改柱子圆角
+			  barBorderRadius: 10,
+			},
+		  barWidth: '15%',
+		  animationDelay: function (idx) {
+			return idx * 100;
+		},
+        },
+        {
+          name: '2室2厅1卫',
+          type: 'bar',
+          data: [0.0543,0.0426,0.0556,0.1379,0.0125,0.1039],
+		  itemStyle: {
+			  // 修改柱子圆角
+			  barBorderRadius: 10,
+			},
+		  barWidth: '15%',
+		  animationDelay: function (idx) {
+			return idx * 100;
+		},
+        },
+		{
+          name: '3室2厅1卫',
+          type: 'bar',
+          data: [0.0,0.117,0.0,0.046,0.0,0.039],
+		  itemStyle: {
+			  // 修改柱子圆角
+			  barBorderRadius: 10,
+			},
+		  barWidth: '15%',
+		  animationDelay: function (idx) {
+			return idx * 100;
+		},
+        },
+      ],
+    };
+    // 将配置项设置给 echarts 实例对象。
+    myChart.setOption(option);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            房源分布区域占比图
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box5">
+                            <script>
+                                // 初始化实例对象 echarts.init(dom)容器;
+                                var myChart = echarts.init(document.querySelector('#box5'));
+                                // 指定配置项和数据
+                              var option = {
+                                title: {
+                                  text: '房源分布区域占比图',
+                                  left: 'center',
+                                  // 修改标题为白色
+                                  textStyle: {
+                                    color: '#000000',
+                                    lineHeight: 1100,
+                                  },
+                                },
+                                // 颜色设置
+                                color: [
+                                    '#f1707d',
+                                    '#f15535',
+                                    '#ef5767',
+                                    '#ae716e',
+                                    '#cb8e85',
+                                    '#cf8878',
+                                    '#c86f67',
+                                    '#f1ccb8',
+                                    '#f2debd',
+                                    '#b8d38f',
+                                    '#ddff95',
+                                    '#ff9b6a',
+                                    '#f1b8f1',
+                                    '#d9b8f1',
+                                    '#f1ccb8',
+                                    '#f1f1b8',
+                                    '#b8f1ed',
+                                    '#b8f1cc',
+                                    '#e7dbca',
+                                    '#DA70D6',
+                                    '#EEE8AA',
+                                    '#98FB98',
+                                    '#AFEEEE',
+                                    '#DB7093',
+                                    '#FFEFD5',
+                                    '#FFDAB9',
+                                    '#CD853F',
+                                    '#FFC0CB',
+                                    '#DDA0DD',
+                                    '#B0E0E6',
+                                    '#800080',
+                                    '#FF0000',
+                                    '#BC8F8F',
+                                    '#4169E1',
+                                ],
+                                tooltip: {
+                                  trigger: 'item',
+                                  formatter: '{a} <br/>{b} : {d}%',
+                                },
+
+                                toolbox: {
+                                    itemGap : 15,
+                                    itemSize: 20,
+                                    show: true,
+                                    feature: {
+                                      dataView: { readOnly: false },
+                                      restore: {},
+                                      saveAsImage: {}
+                                    }
+                              },
+                              legend: {
+                                      type: 'scroll',
+                                      orient: 'vertical',
+                                      right: 80,
+                                      top: 50,
+                                      bottom: 70,
+                                      // 小图标的宽度和高度
+                                      itemWidth: 20,
+                                      itemHeight: 10,
+                                      // 修改图例组件的颜色和文字为 14 px
+                                      textStyle: {
+                                        color: '#000000',
+                                        fontSize: '14',
+                                      },
+                                    },
+                                series: [
+                                  {
+                                    legendHoverLink : true,
+                                    cursor : 'pointer',
+                                    name: '房源占比',
+                                    type: 'pie',
+                                    radius: [30, 110],
+                                    center: ['50%', '50%'],
+                                    // 修改饼形图的显示模式
+                                    // roseType: 'radius',
+                                    // 修改内圆半径和外圆半径，百分比是相对于容器宽度来说的
+                                    radius: ['10%', '60%'],
+                                    data: [
+                                      { value: 11.76, name: '南开区' },
+                                      { value: 8.57, name: '北辰区' },
+                                      { value: 8.20, name: '河西区' },
+                                      { value: 7.93, name: '塘沽区' },
+                                      { value: 7.29, name: '河北区' },
+                                      { value: 7.02, name: '其他区' },
+                                      { value: 6.38, name: '河东区' },
+                                      { value: 6.11, name: '红桥区' },
+                                      { value: 5.83, name: '津南区' },
+                                      { value: 5.47, name: '西青区' },
+                                      { value: 5.47, name: '东丽区' },
+                                      { value: 4.83, name: '和平区' },
+                                      { value: 3.01, name: '武清区' },
+                                      { value: 2.28, name: '开发区' },
+                                      { value: 1.64, name: '宝坻区' },
+                                      { value: 1.19, name: '商住楼区' },
+                                      { value: 1.09, name: '滨海区' },
+                                      { value: 1.00, name: '静海区' },
+                                      { value: 1.00, name: '大港区' },
+                                      { value: 0.82, name: '蓟州区' },
+                                      { value: 0.64, name: '滨海新区' },
+                                      { value: 0.55, name: '汉沽区' },
+                                      { value: 0.46, name: '宁河区' },
+                                      { value: 0.36, name: '南区' },
+                                      { value: 0.18, name: '蓟县区' },
+                                      { value: 0.18, name: '北区' },
+                                      { value: 0.09, name: '西区' },
+                                      { value: 0.09, name: 'AC区' },
+                                      { value: 0.09, name: '平时光区' },
+                                      { value: 0.09, name: '一二期区' },
+                                      { value: 0.09, name: '东区' },
+                                      { value: 0.09, name: '三期区' },
+                                      { value: 0.09, name: '二期区' },
+                                      { value: 0.09, name: '天成轩区' },
+                                    ],
+                                    label: {
+                                        fontSize: 15,
+                                        show:'true',
+                                        position:'outside',
+                                        alignTo : 'edge',
+                                        edgeDistance : '25%',
+                                    },
+                                    labelLine: {
+                                      // 连接到图形的线长度
+                                      length: 10,
+                                      // 连接到文字的线长度
+                                      length2: 25,
+                                    },
+                                  },
+                                ],
+                              };
+
+
+                                myChart.setOption(option);
+                              </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            房屋朝向占比图
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box6">
+  <script>
+    // 初始化实例对象 echarts.init(dom)容器;
+    var myChart = echarts.init(document.querySelector('#box6'));
+    // 指定配置项和数据
+  var option = {
+    title: {
+      text: '房屋朝向占比图',
+      left: 'center',
+      // 修改标题为白色
+      textStyle: {
+        color: '#000000',
+		lineHeight: 1050,
+      },
+    },
+    // 颜色设置
+    color: [
+		'#f1707d',
+		'#ef5767',
+		'#ae716e',
+		'#cb8e85',
+		'#cf8878',
+		'#c86f67',
+		'#f1ccb8',
+		'#f2debd',
+		'#b8d38f',
+		'#ddff95',
+		'#ff9b6a',
+		'#f1b8f1',
+		'#d9b8f1',
+		'#f1ccb8',
+		'#f1f1b8',
+		'#b8f1ed',
+		'#b8f1cc',
+		'#e7dbca',
+		'#DA70D6',
+		'#EEE8AA',
+		'#98FB98',
+		'#AFEEEE',
+		'#DB7093',
+		'#FFEFD5',
+		'#FFDAB9',
+		'#CD853F',
+		'#FFC0CB',
+		'#DDA0DD',
+		'#B0E0E6',
+		'#800080',
+		'#FF0000',
+		'#BC8F8F',
+		'#4169E1',
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {d}%',
+    },
+
+    toolbox: {
+		itemGap : 15,
+		itemSize: 20,
+		show: true,
+		feature: {
+		  dataView: { readOnly: false },
+		  restore: {},
+		  saveAsImage: {}
+		}
+  },
+  legend: {
+		  left: 'center',
+		  top: 'bottom',
+		  // 小图标的宽度和高度
+		  itemWidth: 20,
+		  itemHeight: 10,
+		  // 修改图例组件的颜色和文字为 14 px
+		  textStyle: {
+			color: '#000000',
+			fontSize: '14',
+		  },
+		},
+    series: [
+      {
+        name: '房源占比',
+        type: 'pie',
+        radius: [30, 110],
+        center: ['50%', '50%'],
+        // 修改饼形图的显示模式
+        // roseType: 'radius',
+        // 修改内圆半径和外圆半径，百分比是相对于容器宽度来说的
+        radius: ['10%', '60%'],
+        data: [
+          { value: 47.58, name: '南北' },
+          { value: 38.56, name: '朝南' },
+          { value: 3.83, name: '朝东' },
+          { value: 2.28, name: '朝北' },
+          { value: 2.10, name: '东南' },
+          { value: 1.73, name: '朝西' },
+          { value: 1.46, name: '东西' },
+          { value: 0.82, name: '东北' },
+		  { value: 0.82, name: '西北' },
+          { value: 0.82, name: '西南' },
+
+        ],
+        label: {
+          fontSize: 15,
+		  show:'true',
+			position:'outside',
+			alignTo : 'edge',
+			edgeDistance : '25%',
+        },
+        labelLine: {
+          // 连接到图形的线长度
+          length: 10,
+          // 连接到文字的线长度
+          length2: 25,
+        },
+      },
+    ],
+  };
+
+
+    myChart.setOption(option);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            户型占比图
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box7">
+                            <script>
+                                // 初始化实例对象 echarts.init(dom)容器;
+                                var myChart = echarts.init(document.querySelector('#box7'));
+                                // 指定配置项和数据
+                              var option = {
+                                title: {
+                                  text: '户型占比图',
+                                  left: 'center',
+                                  // 修改标题为白色
+                                  textStyle: {
+                                    color: '#000000',
+                                    lineHeight: 1100,
+                                  },
+                                },
+                                // 颜色设置
+                                color: [
+                                    '#f1707d',
+                                    '#ef5767',
+                                    '#ae716e',
+                                    '#cb8e85',
+                                    '#cf8878',
+                                    '#c86f67',
+                                    '#f1ccb8',
+                                    '#f2debd',
+                                    '#b8d38f',
+                                    '#ddff95',
+                                    '#ff9b6a',
+                                    '#f1b8f1',
+                                    '#d9b8f1',
+                                    '#f1ccb8',
+                                    '#f1f1b8',
+                                    '#b8f1ed',
+                                    '#b8f1cc',
+                                    '#e7dbca',
+                                    '#DA70D6',
+                                    '#EEE8AA',
+                                    '#98FB98',
+                                    '#AFEEEE',
+                                    '#DB7093',
+                                    '#FFEFD5',
+                                    '#FFDAB9',
+                                    '#CD853F',
+                                    '#FFC0CB',
+                                    '#DDA0DD',
+                                    '#B0E0E6',
+                                    '#800080',
+                                    '#FF0000',
+                                    '#BC8F8F',
+                                    '#4169E1',
+                                ],
+
+                                tooltip: {
+                                  trigger: 'item',
+                                  formatter: '{a} <br/>{b} : {d}%',
+                                },
+
+                                toolbox: {
+                                    itemGap : 15,
+                                    itemSize: 20,
+                                    show: true,
+                                    feature: {
+                                      dataView: { readOnly: false },
+                                      restore: {},
+                                      saveAsImage: {}
+                                    }
+                              },
+                              legend: {
+                                      type: 'scroll',
+                                      orient: 'vertical',
+                                      right: 80,
+                                      top: 50,
+                                      bottom: 70,
+                                      // 小图标的宽度和高度
+                                      itemWidth: 20,
+                                      itemHeight: 10,
+                                      // 修改图例组件的颜色和文字为 14 px
+                                      textStyle: {
+                                        color: '#000000',
+                                        fontSize: '14',
+                                      },
+                                    },
+                                series: [
+                                  {
+                                    name: '房源占比',
+                                    type: 'pie',
+                                    radius: [30, 110],
+                                    center: ['50%', '50%'],
+                                    // 修改饼形图的显示模式
+                                    // roseType: 'radius',
+                                    // 修改内圆半径和外圆半径，百分比是相对于容器宽度来说的
+                                    radius: ['10%', '60%'],
+                                    data: [
+                                      { value: 36.83, name: '2室1厅1卫' },
+                                      { value: 34.28, name: '1室1厅1卫' },
+                                      { value: 11.39, name: '2室2厅1卫' },
+                                      { value: 4.38, name: '3室2厅1卫' },
+                                      { value: 3.92, name: '3室2厅2卫' },
+                                      { value: 3.83, name: '3室1厅1卫' },
+                                      { value: 1.64, name: '1室0厅1卫' },
+                                      { value: 0.73, name: '3室1厅2卫' },
+                                      { value: 0.55, name: '2室2厅2卫' },
+                                      { value: 0.46, name: '4室2厅2卫' },
+                                      { value: 0.36, name: '2室0厅1卫' },
+                                      { value: 0.27, name: '2室1厅2卫' },
+                                      { value: 0.27, name: '1室2厅1卫' },
+                                      { value: 0.18, name: '5室2厅2卫' },
+                                      { value: 0.18, name: '2室1厅0卫' },
+                                      { value: 0.18, name: '3室2厅3卫' },
+                                      { value: 0.09, name: '1室1厅0卫' },
+                                      { value: 0.09, name: '4室1厅2卫' },
+                                      { value: 0.09, name: '2室2厅3卫' },
+                                      { value: 0.09, name: '3室3厅3卫' },
+                                      { value: 0.09, name: '5室1厅2卫' },
+                                      { value: 0.09, name: '1室2厅2卫' },
+                                    ],
+
+                                    label: {
+                                      fontSize: 15,
+                                      position:'outside',
+                                      alignTo : 'edge',
+                                      edgeDistance : '25%',
+                                    },
+                                    labelLine: {
+                                      // 连接到图形的线长度
+                                      length: 10,
+                                      // 连接到文字的线长度
+                                      length2: 25,
+                                    },
+                                  },
+                                ],
+                              };
+
+
+                                myChart.setOption(option);
+                              </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            装修类型占比图
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="box8">
+                            <script>
+    // 初始化实例对象 echarts.init(dom)容器;
+    var myChart = echarts.init(document.querySelector('#box8'));
+    // 指定配置项和数据
+
+  var option = {
+    title: {
+      text: '装修类型占比图',
+      left: 'center',
+      // 修改标题为白色
+      textStyle: {
+        color: '#000000',
+		lineHeight: 1050,
+      },
+    },
+    // 颜色设置
+    color: [
+		'#f1707d',
+		'#DDA0DD',
+		'#B0E0E6',
+		'#800080',
+		'#4169E1',
+    ],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {d}%',
+    },
+    toolbox: {
+		itemGap : 15,
+		itemSize: 20,
+		show: true,
+		feature: {
+		  dataView: { readOnly: false },
+		  restore: {},
+		  saveAsImage: {}
+		}
+	  },
+	legend: {
+		left: 'center',
+		top: 'bottom',
+		// 小图标的宽度和高度
+		itemWidth: 20,
+		itemHeight: 10,
+		// 修改图例组件的颜色和文字为 14 px
+		textStyle: {
+			color: '#000000',
+			fontSize: '14',
+		    },
+		},
+
+    series: [
+      {
+		legendHoverLink : true,
+		cursor : 'pointer',
+        name: '房源占比',
+        type: 'pie',
+        radius: [30, 110],
+        center: ['50%', '50%'],
+        // 修改饼形图的显示模式
+        // roseType: 'radius',
+        // 修改内圆半径和外圆半径，百分比是相对于容器宽度来说的
+        radius: ['10%', '60%'],
+        data: [
+          { value: 59.43, name: '精装修' },
+          { value: 38.74, name: '简单装修'},
+          { value: 1, name: '豪华装修' },
+          { value: 0.46, name: '毛坯' },
+          { value: 0.36, name: '其他' },
+        ],
+		labelLayout: function (params) {
+			const isLeft = params.labelRect.x < myChart.getWidth() / 2;
+			const points = params.labelLinePoints;
+			// Update the end point.
+			points[2][0] = isLeft
+			  ? params.labelRect.x
+			  : params.labelRect.x + params.labelRect.width;
+			return {
+			  labelLinePoints: points
+			};
+		},
+        label: {
+          fontSize: 15,
+		  alignTo : 'edge',
+		  edgeDistance : '25%',
+		  //formatter: '{{b}}\n{time|{d} %} ',
+		  minMargin: 5,
+          lineHeight: 15,
+
+        },
+        labelLine: {
+          length: 15,
+          length2: 25,
+
+        },
+      },
+    ],
+};
+
+
+    myChart.setOption(option);
+  </script>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+            </div>
+            <!-- /.row -->
+            2023南开计网实习实训人工智能13组 <a target="_blank" href="https://github.com/Koross2003/anjuke_DataAnalysis_SimpleChatbot">@GitHub地址</a>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static 'vendor/metisMenu/metisMenu.min.js' %}"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <script src="{% static 'vendor/flot/excanvas.min.js' %}"></script>
+    <script src="{% static 'vendor/flot/jquery.flot.js' %}"></script>
+    <script src="{% static 'vendor/flot/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'vendor/flot/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'vendor/flot/jquery.flot.time.js' %}"></script>
+    <script src="{% static 'vendor/flot-tooltip/jquery.flot.tooltip.min.js' %}"></script>
+    <script src="{% static 'data/flot-data.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'dist/js/sb-admin-2.js' %}"></script>
+
+</body>
+
+</html>
